@@ -7,6 +7,8 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 	private PassengerNode<K,V>[] passengersInfo;
 	
 	private int size;
+
+	private static final String DELETED = "DELETED";
 	
 	public HashTable(int capacity) {
 		
@@ -16,17 +18,22 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 	}
 	
 	@Override
-	public void insert(K key, V val) {
+	public void insert(K key, V val,PassengerNode<K,V> pointer) {
 		
 		int position = this.hashFunction(key);
 		
+		
 		if (this.passengersInfo[position] == null) {
-			this.passengersInfo[position] = new PassengerNode<>(key, val);;
-		}else if(passengersInfo[position] != null && passengersInfo[position].getNext() == null){
-			passengersInfo[position].setNext(new PassengerNode<>(key, val));
-		}else 
+			this.passengersInfo[position] = new PassengerNode<>(key, val);
+		
+		}else if(pointer != null && passengersInfo[position] != null && passengersInfo[position].getNext() == null){
+			pointer.setNext(new PassengerNode<>(key, val));
+		}else{
+			pointer = passengersInfo[position];
+			insert(key, val,pointer.getNext());
+		} 
 
-		this.size++;
+
 	}
 	
 	@Override
@@ -51,14 +58,16 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 		int position = this.hashFunction(key);
 		
 		if (this.passengersInfo[position] != null) {
-			for (PassengerNode<K,V> cube : this.passengersInfo[position]) {
-				if (cube.getKey().equals(key)) {
+			for (int i = 0;i<passengersInfo.length;i++) {
+				if (passengersInfo[i].getKey().equals(key)) {
 					// If we find the element, remove it from the list and update the size
-					this.passengersInfo[position].remove(cube);
+					this.passengersInfo[position].remove(passengersInfo[i]);
 					this.size--;
 					return true;
 				}
 			}
+
+			
 		}
 		
 		return false;
