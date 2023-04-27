@@ -20,7 +20,7 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 	@Override
 	public void insert(K key, V val) {
 		
-		int position = this.hashFunction(key);
+		int position = hashFunction(key);
 		
 		
 		if (this.passengersInfo[position] == null) {
