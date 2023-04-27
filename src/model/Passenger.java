@@ -47,12 +47,31 @@ public class Passenger {
         "Asiento: " + ticket + "\n";
     }
 
-    public Passenger(String name, long id, String ticket, TypeHelp tHelp){
+    public Passenger(String name, long id, String ticket, int tHelp){
 
         this.name = name;
         this.ticket = ticket;
         this.id =id;
-        this.typeHelp = tHelp;
+        
+        switch (tHelp) {
+            case 1:
+                typeHelp = TypeHelp.PHYSICAL_DISABILITY;
+                break;
+            case 2: 
+                typeHelp = TypeHelp.MENTAL_DISABILITY;
+                break;
+            
+            case 3: 
+                typeHelp = TypeHelp.THIRD_AGE;
+                break;
+            case 4: 
+                typeHelp = TypeHelp.PREGNANCY;
+
+            case 5: 
+                typeHelp = TypeHelp.CHILD;
+            default:
+                break;
+        }
 
     }
 
