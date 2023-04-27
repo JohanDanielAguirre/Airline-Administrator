@@ -19,14 +19,13 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 	public void insert(K key, V val) {
 		
 		int position = this.hashFunction(key);
-		/* 
-		if (this.passengersInfo[position] == null) {
-			this.passengersInfo[position] = ;
-		}
-
-		*/
 		
-		this.passengersInfo[position] = new PassengerNode<>(key, val);
+		if (this.passengersInfo[position] == null) {
+			this.passengersInfo[position] = new PassengerNode<>(key, val);;
+		}else if(passengersInfo[position] != null && passengersInfo[position].getNext() == null){
+			passengersInfo[position].setNext(new PassengerNode<>(key, val));
+		}else 
+
 		this.size++;
 	}
 	
