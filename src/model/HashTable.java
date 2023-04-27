@@ -4,13 +4,13 @@ import java.util.LinkedList;
 
 public class HashTable<K,V> implements iHashTable<K,V>{
 	
-	private LinkedList<PassengerNode<K,V>>[] passengersInfo;
+	private PassengerNode<K,V>[] passengersInfo;
 	
 	private int size;
 	
 	public HashTable(int capacity) {
 		
-		this.passengersInfo = new LinkedList[capacity];
+		this.passengersInfo = new PassengerNode[capacity];
 		
 		this.size = 0;
 	}
@@ -19,12 +19,14 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 	public void insert(K key, V val) {
 		
 		int position = this.hashFunction(key);
-		
+		/* 
 		if (this.passengersInfo[position] == null) {
-			this.passengersInfo[position] = new LinkedList<>();
+			this.passengersInfo[position] = ;
 		}
+
+		*/
 		
-		this.passengersInfo[position].add(new PassengerNode<>(key, val));
+		this.passengersInfo[position] = new PassengerNode<>(key, val);
 		this.size++;
 	}
 	
@@ -34,10 +36,10 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 		int position = this.hashFunction(key);
 		
 		if (this.passengersInfo[position] != null) {
-			for (PassengerNode<K,V> cube : this.passengersInfo[position]) {
-				if (cube.getKey().equals(key)) {
+			for (int i = 0;i<passengersInfo.length;i++) {
+				if (passengersInfo[i].getKey().equals(key)) {
 					// If we find the element, return its value
-					return cube.getValue();
+					return passengersInfo[i].getValue();
 				}
 			}
 		}
