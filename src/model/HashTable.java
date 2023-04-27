@@ -18,7 +18,7 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 	}
 	
 	@Override
-	public void insert(K key, V val,PassengerNode<K,V> pointer) {
+	public void insert(K key, V val) {
 		
 		int position = this.hashFunction(key);
 		
@@ -26,14 +26,26 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 		if (this.passengersInfo[position] == null) {
 			this.passengersInfo[position] = new PassengerNode<>(key, val);
 		
-		}else if(pointer != null && passengersInfo[position] != null && passengersInfo[position].getNext() == null){
-			pointer.setNext(new PassengerNode<>(key, val));
+		}else if(passengersInfo[position] != null && passengersInfo[position].getNext() == null){
+			passengersInfo[position].setNext(new PassengerNode<>(key, val));
 		}else{
-			pointer = passengersInfo[position];
-			insert(key, val,pointer.getNext());
+			PassengerNode<K,V> pointer = addWhenNode(passengersInfo[position]);
+			pointer.setNext(new PassengerNode<>(key, val));;
 		} 
 
 
+	}
+
+	private PassengerNode<K,V> addWhenNode(PassengerNode<K,V> pointer){
+
+		if(pointer.getNext() == null){
+			return pointer;
+		}else{
+			return addWhenNode(pointer.getNext());
+		}
+		
+		
+		
 	}
 	
 	@Override
