@@ -18,4 +18,14 @@ public class AirlineAdministrator {
 
         return msg;
     }
+
+    public String addPassengerToPlane(long id){
+        String msg = "";
+
+        Passenger passenger = passengersInfo.search(id);
+
+        
+
+        return msg;
+    }
 }

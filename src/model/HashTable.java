@@ -8,7 +8,7 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 	
 	private int size;
 
-	private static final String DELETED = "DELETED";
+	//private static final String DELETED = "DELETED";
 	
 	public HashTable(int capacity) {
 		
