@@ -9,6 +9,8 @@ public class PassengerNode<K,V>{
 
     private PassengerNode<K,V> next;
 
+    private PassengerNode<K,V> previous;
+
     public PassengerNode(K key, V value){
         this.key = key;
         this.value = value;
@@ -36,5 +38,13 @@ public class PassengerNode<K,V>{
 
     public void setNext(PassengerNode<K, V> next) {
         this.next = next;
+    }
+
+    public PassengerNode<K, V> getPrevious() {
+        return previous;
+    }
+    
+    public void setPrevious(PassengerNode<K, V> previous) {
+        this.previous = previous;
     }
 }

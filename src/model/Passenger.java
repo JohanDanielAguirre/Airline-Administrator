@@ -125,6 +125,7 @@ public class Passenger {
             case 5: 
                 typeHelp = TypeHelp.CHILD;
             default:
+                typeHelp = null;
                 break;
         }
 
