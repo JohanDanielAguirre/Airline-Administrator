@@ -1,6 +1,7 @@
 package model;
 
-import java.util.LinkedList;
+
+@SuppressWarnings("unchecked")
 
 public class HashTable<K,V> implements iHashTable<K,V>{
 	
@@ -22,16 +23,20 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 		
 		int position = hashFunction(key);
 		
+		PassengerNode<K,V> toAdd = new PassengerNode<>(key, val);
 		
 		if (this.passengersInfo[position] == null) {
-			this.passengersInfo[position] = new PassengerNode<>(key, val);
-		
+			passengersInfo[position] = toAdd;
 		}else if(passengersInfo[position] != null && passengersInfo[position].getNext() == null){
 			passengersInfo[position].setNext(new PassengerNode<>(key, val));
+			toAdd.setPrevious(passengersInfo[position]);
 		}else{
 			PassengerNode<K,V> pointer = addWhenNode(passengersInfo[position]);
-			pointer.setNext(new PassengerNode<>(key, val));;
-		} 
+			pointer.setNext(toAdd);
+			toAdd.setPrevious(pointer);
+		}
+		
+		size++;
 
 
 	}
@@ -53,33 +58,66 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 		
 		int position = this.hashFunction(key);
 		
-		if (this.passengersInfo[position] != null) {
-			for (int i = 0;i<passengersInfo.length;i++) {
-				if (passengersInfo[i].getKey().equals(key)) {
-					// If we find the element, return its value
-					return passengersInfo[i].getValue();
+		PassengerNode<K,V> toSearch = passengersInfo[position];
+		boolean flag = true;
+		if (toSearch != null) {
+			while(flag){
+				if(toSearch.getKey().equals(key)){
+					flag = false;
+				}
+
+				if(flag){
+					toSearch = toSearch.getNext();
+					if(toSearch == null){
+						flag = false;
+					}
 				}
 			}
 		}
-		return null;
+		return toSearch == null? null : toSearch.getValue();
     }
+
+	private PassengerNode<K,V> search2(K key) {
+		
+		int position = this.hashFunction(key);
+		
+		PassengerNode<K,V> toSearch = passengersInfo[position];
+		boolean flag = true;
+		if (toSearch != null) {
+			while(flag){
+				if(toSearch.getKey().equals(key)){
+					flag = false;
+				}
+
+				if(flag){
+					toSearch = toSearch.getNext();
+					if(toSearch == null){
+						flag = false;
+					}
+				}
+			}
+		}
+		return toSearch;
+    }
+	
 	
 	@Override
 	public boolean delete(K key) {
 		
 		int position = this.hashFunction(key);
 		
-		if (this.passengersInfo[position] != null) {
-			for (int i = 0;i<passengersInfo.length;i++) {
-				if (passengersInfo[i].getKey().equals(key)) {
-					// If we find the element, remove it from the list and update the size
-					this.passengersInfo[position].remove(passengersInfo[i]);
-					this.size--;
-					return true;
-				}
+		PassengerNode<K,V> toDelete = search2(key);
+		
+		if(toDelete != null){
+			if(toDelete == passengersInfo[position]){
+				passengersInfo[position] = toDelete.getNext();
+			}else{
+				PassengerNode<K,V> toReplace = toDelete.getPrevious();
+				toDelete.getNext().setPrevious(toReplace);
+				toReplace.setNext(toDelete.getNext());
 			}
-
-			
+			size--;
+			return true;
 		}
 		
 		return false;
