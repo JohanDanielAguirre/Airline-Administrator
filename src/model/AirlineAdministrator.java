@@ -8,10 +8,10 @@ public class AirlineAdministrator {
         passengersInfo = new HashTable<>(1001);
     }
 
-    public String addPassenger(String name, long id, String ticket, int tHelp){
+    public String addPassenger(String name, long id, String ticket, int tHelp, int miles, boolean firstclass, int age){
         String msg = "";
 
-        Passenger passenger = new Passenger(name, id, ticket,tHelp);
+        Passenger passenger = new Passenger(name, id, ticket,tHelp, miles, firstclass, age);
 
         passengersInfo.insert(passenger.getId(), passenger);
 
