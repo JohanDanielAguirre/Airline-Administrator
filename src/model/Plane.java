@@ -12,13 +12,16 @@ public class Plane {
 
     private int columns;
 
-    public Plane(String numF, int rows, int columns){
+    private int firstClassRows;
+
+    public Plane(String numF, int rows, int columns, int firstClassRows){
         this.numFlight = numF;
         passengers = new HashTable<>(rows*columns);
         entry = new MaxHeap<>();
         this.rows = rows;
         this.columns = columns;
         this.entry = new MaxHeap<>();
+        this.firstClassRows = firstClassRows;
     }
 
     public String getNumFlight() {
@@ -43,6 +46,14 @@ public class Plane {
 
     public void setRows(int rows) {
         this.rows = rows;
+    }
+
+    public int getFirstClassRows() {
+        return firstClassRows;
+    }
+
+    public void setFirstClassRows(int firstClassRows) {
+        this.firstClassRows = firstClassRows;
     }
 
     @Override

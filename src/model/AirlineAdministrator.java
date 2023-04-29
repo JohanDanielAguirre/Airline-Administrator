@@ -1,10 +1,13 @@
 package model;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 
 public class AirlineAdministrator {
     
@@ -12,29 +15,17 @@ public class AirlineAdministrator {
 
     private Plane plane;
 
-    public void AirlineAdministrator(String flightNum, int rows, int columns){
+    public void AirlineAdministrator(String flightNum, int rows, int columns, int firstClassRows){
         passengersInfo = new HashTable<>(rows*columns);
-        plane = new Plane(flightNum, rows, columns);
+        plane = new Plane(flightNum, rows, columns, firstClassRows);
         return;
     }
 
-    public String addPassenger(int opClass, String name, long id, String ticket, int tHelp,int miles){
+    public String addPassenger(Passenger passenger){
         String msg = "";
 
-        switch (opClass)
-        {
-            case 1: 
-               Passenger passenger = new Passenger(name, id, ticket);
-               msg = "Se creo el pasajero de clase economica";
-               passengersInfo.insert(passenger.getId(), passenger);
-               break;
-
-            case 2:
-                Passenger passenger2 = new FirstClass(name, id, ticket, tHelp, miles);
-                msg = "Se creo el pasajero de primera clase";
-                passengersInfo.insert(passenger2.getId(), passenger2);
-                break; 
-        }
+        msg = "Se creo el pasajero de clase economica";
+        passengersInfo.insert(passenger.getId(), passenger);
 
         return msg;
     }
@@ -59,7 +50,7 @@ public class AirlineAdministrator {
             Plane[] planes = gson.fromJson(reader, Plane[].class);
             reader.close();
 
-            AirlineAdministrator(planes[0].getNumFlight(), planes[0].getRows(), planes[0].getColumns());
+            AirlineAdministrator(planes[0].getNumFlight(), planes[0].getRows(), planes[0].getColumns(), planes[0]);
         } catch (FileNotFoundException e) {
             System.err.println("File not found");
         }catch (IOException e) {
@@ -70,14 +61,17 @@ public class AirlineAdministrator {
     public void jsonInFlightPassengerInfo(){
         Gson gson = new Gson();
         File dataDirectory = new File("data");
-        File flightInfoFile = new File(dataDirectory, "flightPassengerInfo.json");
+        File passengerInfoFile = new File(dataDirectory, "passengerInfo.json");
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(flightInfoFile));
-            Plane[] planes = gson.fromJson(reader, Plane[].class);
+            BufferedReader reader = new BufferedReader(new FileReader(passengerInfoFile));
+            Passenger[] passengers = gson.fromJson(reader, Passenger[].class);
             reader.close();
 
-            AirlineAdministrator(planes[0].getNumFlight(), planes[0].getRows(), planes[0].getColumns());
+            for(int i = 0; i<passengers.length; i++){
+                addPassenger(passengers[i]);
+            }
+
         } catch (FileNotFoundException e) {
             System.err.println("File not found");
         }catch (IOException e) {
@@ -87,21 +81,20 @@ public class AirlineAdministrator {
     public void jsonArrivalTimeInfo(){
 
         Gson gson = new Gson();
-        File projectDir = new File(System.getProperty("user.dir"));
-        File dataDirectory = new File(projectDir+"/data");
-        File result = new File(projectDir+"/data/result.json");
+        File dataDirectory = new File("data");
+        File arrivalTimeInfoFile = new File(dataDirectory, "arrivalTimeInfo.json");
 
         try {
-            FileInputStream fileIn = new FileInputStream("arrivalTimes.ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            //read dunno how to use yet----in.readObject();
-            in.close();
-            fileIn.close();
+            BufferedReader reader = new BufferedReader(new FileReader(arrivalTimeInfoFile));
+            Type arrivalTimeType = new TypeToken<HashMap<Long, Calendar>>(){}.getType();
+            HashMap<Long, Calendar> arrivalTimeMap = gson.fromJson(reader, arrivalTimeType);
+            reader.close();
+
+            // Do something with the map of id and arrival time...
         } catch (FileNotFoundException e) {
             System.err.println("File not found");
         }catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

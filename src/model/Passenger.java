@@ -7,8 +7,11 @@ public class Passenger {
     private String name;
     private long id;
     private String ticket;
-
     private Calendar ArrivalTime;
+    private int miles;
+    private TypeHelp typeHelp;
+
+    private boolean firstClass;
 
     public String getName() {
         return name;
@@ -52,11 +55,33 @@ public class Passenger {
                 '}';
     }
 
-    public Passenger(String name, long id, String ticket){
+    public Passenger(String name, long id, String ticket,int tHelp, int miles){
 
         this.name = name;
         this.ticket = ticket;
         this.id =id;
+        this.miles = miles;
+
+        switch (tHelp) {
+            case 1:
+                typeHelp = TypeHelp.PHYSICAL_DISABILITY;
+                break;
+            case 2:
+                typeHelp = TypeHelp.MENTAL_DISABILITY;
+                break;
+
+            case 3:
+                typeHelp = TypeHelp.THIRD_AGE;
+                break;
+            case 4:
+                typeHelp = TypeHelp.PREGNANCY;
+
+            case 5:
+                typeHelp = TypeHelp.CHILD;
+            default:
+                typeHelp = null;
+                break;
+        }
 
     }
 

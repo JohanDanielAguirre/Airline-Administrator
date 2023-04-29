@@ -50,10 +50,11 @@ public class Main{
         sc.nextLine();
         switch(op){
             case 1:
-                uploadFlightInfo();
+                admin.jsonInFlightInfo();
+                admin.jsonInFlightPassengerInfo();
                 break;
             case 2:
-                uploadArrivalTimes();
+                admin.jsonArrivalTimeInfo();
                 break;
             case 3:
                 passengerEntry();
@@ -76,61 +77,7 @@ public class Main{
                 break;
         }
     }
-    public void uploadFlightInfo(){
 
-        //Flight number
-        String flightNum = sc.nextLine();
-        //Flight rows
-        int flightRows = sc.nextInt();
-        //Flight columns
-        int flightColumns = sc.nextInt();
-
-        admin.AirlineAdministrator(flightNum, flightRows, flightColumns);
-
-        //Passenger amount
-        int passengerNum = sc.nextInt();
-
-        for(int i = 0; i<passengerNum; i++){
-            int miles = 0;
-            int tHelp = 0;
-            int opClass = sc.nextInt();
-            sc.nextLine();
-            String passName = sc.nextLine();
-            long id = sc.nextLong();
-            String ticket = sc.nextLine();
-            if(opClass == 2){
-                System.out.println("What kind of help needs the passenger. If none help required press 0: \n"+
-                        "1. phisical disiability\n" +
-                        "2. mental disiability\n" +
-                        "3. third age\n" +
-                        "4. pregnancy\n" +
-                        "5. child\n");
-                tHelp = sc.nextInt();
-
-                System.out.println("Amount of miles");
-                miles = sc.nextInt();
-            }
-            admin.addPassenger(opClass, passName, id, ticket, tHelp, miles);
-        }
-        return;
-    }
-
-    public void uploadArrivalTimes(){
-        //Amount of passenger data
-        int amountOnTime = sc.nextInt();
-
-        for(int i = 0; i<amountOnTime; i++){
-            //id, ticket and calendar arrival time
-            long id = sc.nextLong();
-            int year = sc.nextInt();
-            int month = sc.nextInt();
-            int day = sc.nextInt();
-            Calendar calendar = Calendar.getInstance();
-            calendar.set(year, month - 1, day);
-            admin.addArrival(id, calendar);
-        }
-        return;
-    }
     public void passengerEntry(){
         admin.addPassengersToPlane();
     }
