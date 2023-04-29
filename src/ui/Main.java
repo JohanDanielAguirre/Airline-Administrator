@@ -66,18 +66,6 @@ public class Main{
 
     }
 
-    public void executeOp(int op){
-        
-        switch (op) {
-            case 1:
-                
-                break;
-        
-            default:
-                break;
-        }
-    }
-
     public void passengerEntry(){
         admin.addPassengersToPlane();
     }

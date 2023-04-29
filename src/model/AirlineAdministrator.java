@@ -50,7 +50,7 @@ public class AirlineAdministrator {
             Plane[] planes = gson.fromJson(reader, Plane[].class);
             reader.close();
 
-            AirlineAdministrator(planes[0].getNumFlight(), planes[0].getRows(), planes[0].getColumns(), planes[0]);
+            AirlineAdministrator(planes[0].getNumFlight(), planes[0].getRows(), planes[0].getColumns(), planes[0].getFirstClassRows());
         } catch (FileNotFoundException e) {
             System.err.println("File not found");
         }catch (IOException e) {
@@ -90,11 +90,15 @@ public class AirlineAdministrator {
             HashMap<Long, Calendar> arrivalTimeMap = gson.fromJson(reader, arrivalTimeType);
             reader.close();
 
-            // Do something with the map of id and arrival time...
+            for (Long id : arrivalTimeMap.keySet()) {
+                Calendar arrivalTime = arrivalTimeMap.get(id);
+                passengersInfo.search(id).setArrivalTime(arrivalTime);
+            }
         } catch (FileNotFoundException e) {
             System.err.println("File not found");
         }catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }
