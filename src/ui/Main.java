@@ -93,16 +93,10 @@ public class Main{
             System.err.println("File not found");
         }catch (IOException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Deserialized data:");
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i).toString());
         }
 
     }
-    public void jsonInFlightInfo(){
+    public void jsonArrivalTimeInfo(){
 
         Gson gson = new Gson();
         File projectDir = new File(System.getProperty("user.dir"));
@@ -118,8 +112,6 @@ public class Main{
         } catch (FileNotFoundException e) {
             System.err.println("File not found");
         }catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
