@@ -44,10 +44,12 @@ public class Passenger {
 
     @Override
     public String toString() {
-        
-        return "Nombre : " + name + "\n" +
-        "Id: " + id + "n" +
-        "Asiento: " + ticket + "\n";
+        return "Passenger{" +
+                "name=" + name + '\'' +
+                ", id=" + id +
+                ", ticket=" + ticket + '\'' +
+                ", ArrivalTime=" + ArrivalTime +
+                '}';
     }
 
     public Passenger(String name, long id, String ticket){

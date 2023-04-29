@@ -21,4 +21,38 @@ public class Plane {
         this.entry = new MaxHeap<>();
     }
 
+    public String getNumFlight() {
+        return numFlight;
+    }
+
+    public void setNumFlight(String numFlight) {
+        this.numFlight = numFlight;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
+
+    public void setColumns(int columns) {
+        this.columns = columns;
+    }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public void setRows(int rows) {
+        this.rows = rows;
+    }
+
+    @Override
+    public String toString() {
+        return "Plane{" +
+                "numFlight=" + numFlight + '\'' +
+                ", entry=" + entry +
+                ", passengers=" + passengers +
+                ", rows=" + rows +
+                ", columns=" + columns +
+                '}';
+    }
 }

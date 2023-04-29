@@ -1,5 +1,9 @@
 package model;
 
+import com.google.gson.Gson;
+
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class AirlineAdministrator {
@@ -43,5 +47,61 @@ public class AirlineAdministrator {
     public void addPassengersToPlane(){
 
         return;
+    }
+
+    public void jsonInFlightInfo(){
+        Gson gson = new Gson();
+        File dataDirectory = new File("data");
+        File flightInfoFile = new File(dataDirectory, "flightInfo.json");
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(flightInfoFile));
+            Plane[] planes = gson.fromJson(reader, Plane[].class);
+            reader.close();
+
+            AirlineAdministrator(planes[0].getNumFlight(), planes[0].getRows(), planes[0].getColumns());
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found");
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void jsonInFlightPassengerInfo(){
+        Gson gson = new Gson();
+        File dataDirectory = new File("data");
+        File flightInfoFile = new File(dataDirectory, "flightPassengerInfo.json");
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(flightInfoFile));
+            Plane[] planes = gson.fromJson(reader, Plane[].class);
+            reader.close();
+
+            AirlineAdministrator(planes[0].getNumFlight(), planes[0].getRows(), planes[0].getColumns());
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found");
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void jsonArrivalTimeInfo(){
+
+        Gson gson = new Gson();
+        File projectDir = new File(System.getProperty("user.dir"));
+        File dataDirectory = new File(projectDir+"/data");
+        File result = new File(projectDir+"/data/result.json");
+
+        try {
+            FileInputStream fileIn = new FileInputStream("arrivalTimes.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            //read dunno how to use yet----in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found");
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

@@ -76,46 +76,6 @@ public class Main{
                 break;
         }
     }
-    public void jsonInFlightInfo(){
-
-        Gson gson = new Gson();
-        File projectDir = new File(System.getProperty("user.dir"));
-        File dataDirectory = new File(projectDir+"/data");
-        File result = new File(projectDir+"/data/result.json");
-
-        try {
-            FileInputStream fileIn = new FileInputStream("flightInfo.ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            //read dunno how to use yet----in.readObject();
-            in.close();
-            fileIn.close();
-        } catch (FileNotFoundException e) {
-            System.err.println("File not found");
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-    public void jsonArrivalTimeInfo(){
-
-        Gson gson = new Gson();
-        File projectDir = new File(System.getProperty("user.dir"));
-        File dataDirectory = new File(projectDir+"/data");
-        File result = new File(projectDir+"/data/result.json");
-
-        try {
-            FileInputStream fileIn = new FileInputStream("arrivalTimes.ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            //read dunno how to use yet----in.readObject();
-            in.close();
-            fileIn.close();
-        } catch (FileNotFoundException e) {
-            System.err.println("File not found");
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
     public void uploadFlightInfo(){
 
         //Flight number

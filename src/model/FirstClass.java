@@ -41,6 +41,11 @@ public class FirstClass extends Passenger{
         this.miles = miles;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "FirstClass{" +
+                "miles=" + miles +
+                ", typeHelp=" + typeHelp +
+                '}';
+    }
 }
