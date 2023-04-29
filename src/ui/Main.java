@@ -1,7 +1,13 @@
 package ui;
 
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Scanner;
+import com.google.gson.Gson;
+import java.io.FileReader;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 
 import model.AirlineAdministrator;
 
@@ -69,6 +75,54 @@ public class Main{
             default:
                 break;
         }
+    }
+    public void jsonInFlightInfo(){
+
+        Gson gson = new Gson();
+        File projectDir = new File(System.getProperty("user.dir"));
+        File dataDirectory = new File(projectDir+"/data");
+        File result = new File(projectDir+"/data/result.json");
+
+        try {
+            FileInputStream fileIn = new FileInputStream("flightInfo.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            //read dunno how to use yet----in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found");
+        }catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Deserialized data:");
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i).toString());
+        }
+
+    }
+    public void jsonInFlightInfo(){
+
+        Gson gson = new Gson();
+        File projectDir = new File(System.getProperty("user.dir"));
+        File dataDirectory = new File(projectDir+"/data");
+        File result = new File(projectDir+"/data/result.json");
+
+        try {
+            FileInputStream fileIn = new FileInputStream("arrivalTimes.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            //read dunno how to use yet----in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found");
+        }catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
     public void uploadFlightInfo(){
 
