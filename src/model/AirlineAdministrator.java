@@ -8,13 +8,13 @@ public class AirlineAdministrator {
         passengersInfo = new HashTable<>(1001);
     }
 
-    public String addPassenger(int opClass, String name, long id, String ticket, int tHelp,int miles, boolean firstclass, int age)){
+    public String addPassenger(int opClass, String name, long id, String ticket, int tHelp,int miles){
         String msg = "";
 
         switch (opClass)
         {
             case 1: 
-               Passenger passenger = new Passenger(name, id, ticket,tHelp);
+               Passenger passenger = new Passenger(name, id, ticket);
                msg = "Se creo el pasajero de clase economica";
                passengersInfo.insert(passenger.getId(), passenger);
                break;
@@ -25,7 +25,6 @@ public class AirlineAdministrator {
                 passengersInfo.insert(passenger2.getId(), passenger2);
                 break; 
         }
-
 
         return msg;
     }

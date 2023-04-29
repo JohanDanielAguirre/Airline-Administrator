@@ -64,6 +64,8 @@ public class Main{
         "2. First class\n");
         int opClass = sc.nextInt();
         sc.nextLine();
+        int miles = 0;
+        int tHelp = 0;
 
         System.out.println("Enter the name of the passenger");
         String passName = sc.nextLine();
@@ -74,22 +76,25 @@ public class Main{
         System.out.println("Enter the ticket of the passenger");
         String ticket = sc.nextLine();
 
-        System.out.println("What kind of help needs the passenger. If none help required press 0: \n"+
-        "1. phisical disiability\n" + 
-        "2. mental disiability\n" +
-        "3. third age\n" + 
-        "4. pregnancy\n" + 
-        "5. child\n");
-        int tHelp = sc.nextInt();
+        if(opClass == 2){
+            System.out.println("What kind of help needs the passenger. If none help required press 0: \n"+
+                    "1. phisical disiability\n" +
+                    "2. mental disiability\n" +
+                    "3. third age\n" +
+                    "4. pregnancy\n" +
+                    "5. child\n");
+            tHelp = sc.nextInt();
 
-        int miles = 0;
+            System.out.println("Amount of miles");
+            miles = sc.nextInt();
+        }
+
         if(opClass == 2){
             System.out.println("Enter the quantity of miles of the passenger");
             miles = sc.nextInt();
         }
 
-        admin.addPassenger(opClass, passName, id, ticket, tHelp, miles);
-
+        admin.addPassenger(opClass, passName, id, ticket, tHelp, miles );
         
     }
 
