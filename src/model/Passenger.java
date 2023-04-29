@@ -10,8 +10,6 @@ public class Passenger {
 
     private Calendar ArrivalTime;
 
-    private boolean inAircraft;
-
     public String getName() {
         return name;
     }
@@ -42,14 +40,6 @@ public class Passenger {
 
     public void setArrivalTime(Calendar arrivalTime) {
         ArrivalTime = arrivalTime;
-    }
-
-    public boolean isInAircraft() {
-        return inAircraft;
-    }
-
-    public void setInAircraft(boolean inAircraft) {
-        this.inAircraft = inAircraft;
     }
 
     @Override

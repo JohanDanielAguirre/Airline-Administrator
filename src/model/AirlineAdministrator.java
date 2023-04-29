@@ -1,11 +1,17 @@
 package model;
 
+import java.util.Calendar;
+
 public class AirlineAdministrator {
     
     private HashTable<Long,Passenger> passengersInfo;
 
-    public AirlineAdministrator(){
-        passengersInfo = new HashTable<>(1001);
+    private Plane plane;
+
+    public void AirlineAdministrator(String flightNum, int rows, int columns){
+        passengersInfo = new HashTable<>(rows*columns);
+        plane = new Plane(flightNum, rows, columns);
+        return;
     }
 
     public String addPassenger(int opClass, String name, long id, String ticket, int tHelp,int miles){
@@ -29,13 +35,13 @@ public class AirlineAdministrator {
         return msg;
     }
 
-    public String addPassengerToPlane(long id){
-        String msg = "";
+    public void addArrival(long id, Calendar calendar){
+        passengersInfo.search(id).setArrivalTime(calendar);
+        return;
+    }
 
-        Passenger passenger = passengersInfo.search(id);
+    public void addPassengersToPlane(){
 
-        
-
-        return msg;
+        return;
     }
 }

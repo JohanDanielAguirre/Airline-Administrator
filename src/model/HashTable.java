@@ -162,7 +162,15 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 	 */
 	@Override
 	public int hashFunction(K key) {
-		int hash = key.hashCode() % this.passengersInfo.length;
+		int hash = key.hashCode() % 100;
 		return hash;
+	}
+
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
 	}
 }

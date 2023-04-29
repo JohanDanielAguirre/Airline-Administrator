@@ -6,13 +6,19 @@ public class Plane {
 
     private MaxHeap<Long,Passenger> entry;
 
-    private MinHeap exit;
-
     private HashTable<Long,Passenger> passengers;
 
-    public Plane(String numF, int capacity){
+    private int rows;
+
+    private int columns;
+
+    public Plane(String numF, int rows, int columns){
         this.numFlight = numF;
-        passengers = new HashTable<>(capacity);
+        passengers = new HashTable<>(rows*columns);
         entry = new MaxHeap<>();
+        this.rows = rows;
+        this.columns = columns;
+        this.entry = new MaxHeap<>();
     }
+
 }
