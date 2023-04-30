@@ -1,6 +1,8 @@
 package model;
 
-public class Queue<K, V> implements iQueue<K,V>{
+import Exeptions.DuplicatedObjectExeption;
+
+public class Queue<K, V> implements iQueue<K, V>{
     private PassengerNode<K,V> head;
     private PassengerNode<K,V> tail;
     private int size;
@@ -19,7 +21,7 @@ public class Queue<K, V> implements iQueue<K,V>{
         return size == 0;
     }
 
-    public void add(PassengerNode<K,V> passenger) {
+    public void add(PassengerNode<K,V> passenger) throws DuplicatedObjectExeption{
         if (isEmpty()) {
             head = passenger;
             tail = passenger;

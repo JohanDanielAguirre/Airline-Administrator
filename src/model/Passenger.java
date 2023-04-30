@@ -141,10 +141,4 @@ public class Passenger implements Comparable<Passenger>{
         }
         return 0;
     }
-
-
-
-
-
-    
 }
