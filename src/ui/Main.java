@@ -20,7 +20,7 @@ public class Main{
     LocalDateTime now;
 
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IncorrectObjectExeption {
 
         System.out.println("Welcome to Airline Administrator\n" +
         "Initializing app...");
@@ -47,7 +47,7 @@ public class Main{
         
     }
 
-    public int Menu(){
+    public int Menu() throws IncorrectObjectExeption {
         int op = 0;
 
 
