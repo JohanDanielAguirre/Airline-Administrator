@@ -1,8 +1,8 @@
 package model;
 
-public interface iMaxPriorityQueue<K,V> {
-    public void insert(K key, V val);    
-    public V Maximum();
-    public V extract_Max();
-    public K increase_Key(int x, K newKey);
+public interface iMaxPriorityQueue {
+    public void insert(Passenger passenger);    
+    public Passenger Maximum();
+    public Passenger extract_Max();
+    public void increase_Key(int x, int newKey);
 }

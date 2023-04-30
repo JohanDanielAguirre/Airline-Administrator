@@ -2,7 +2,7 @@ package model;
 
 import java.util.Calendar;
 
-public class Passenger implements Comparable<Passenger>{
+public class Passenger{
 
     private String name;
     private long id;
@@ -93,6 +93,10 @@ public class Passenger implements Comparable<Passenger>{
 
     }
 
+    public int getPriority() {
+        return priority;
+    }
+
     public boolean getFirstClass(){
        return firstClass; 
     }
@@ -100,25 +104,17 @@ public class Passenger implements Comparable<Passenger>{
     public int getMiles() {
         return miles;
     }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
     
-    public int compareTo(Passenger o) {
-        int value = 0;
-
-        value = this.priority - priority;
-        if(value == 0){
-            if(this.firstClass && !o.getFirstClass()){
-                value += 1;
-            }else if(!this.firstClass && o.getFirstClass()){
-                value += -1;
-            }
-
-            if(value == 0){
-                value = this.miles - o.getMiles();
-            }
+    public void calculatePriority() {
+        if(firstClass){
+            priority = priority +1;
         }
+        priority = priority + miles/1000;
         
-       
-        return value;
     }
 
 

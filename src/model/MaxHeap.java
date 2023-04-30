@@ -1,34 +1,33 @@
 package model;
 
-@SuppressWarnings("unchecked")
 
-public class MaxHeap<K extends Comparable<K>,V> implements iMaxPriorityQueue<K,V>{
+public class MaxHeap implements iMaxPriorityQueue{
 
-    private PassengerNode<K,V>[] passengers;
+    private Passenger[] passengers;
     int heapSize;
 
     public MaxHeap(int capacity){
-        passengers = new PassengerNode[capacity];
+        passengers = new Passenger[capacity];
     }
 
     @Override
-    public void insert(K key, V val) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insert'");
+    public void insert(Passenger passenger) {
+        heapSize = heapSize + 1;
+        passengers[heapSize] = passenger; 
     }
 
     @Override
-    public V Maximum() {
-        return passengers[0].getValue();
+    public Passenger Maximum() {
+        return passengers[0];
     }
 
     @Override
-    public V extract_Max() {
+    public Passenger extract_Max() {
         if(heapSize < 1){
             return null;
         }
 
-        V max = Maximum();
+        Passenger max = Maximum();
         
         passengers[0] = passengers[heapSize];
 
@@ -39,13 +38,24 @@ public class MaxHeap<K extends Comparable<K>,V> implements iMaxPriorityQueue<K,V
     }
 
     @Override
-    public K increase_Key(int x, K newKey) {
-        
-        
+    public void increase_Key(int x, int newKey) {
+       
+        if(passengers[x].getPriority() > newKey){
+            return;
+        }
 
+        passengers[0].setPriority(newKey);
         
+        
+        while(x>0 && passengers[parent(x)].getPriority()<passengers[x].getPriority()){
+            Passenger swap = passengers[x];
 
-        return newKey;
+            passengers[x] = passengers[parent(x)];
+            passengers[parent(x)] = swap;
+
+            x = parent(x);
+        }
+
     }
 
     private void buildMaxHeap(){
@@ -62,13 +72,13 @@ public class MaxHeap<K extends Comparable<K>,V> implements iMaxPriorityQueue<K,V
         int r = right(i);
 
         int largest;
-        if(l<=heapSize && passengers[l].getKey().compareTo(passengers[i].getKey()) > 0){
+        if(l<=heapSize && passengers[l].getPriority() > passengers[i].getPriority()){
             largest = l;
         }else {
             largest = i;
         }
 
-        if(r<=heapSize && passengers[r].getKey().compareTo(passengers[largest].getKey()) > 0){
+        if(r<=heapSize && passengers[r].getPriority() > passengers[largest].getPriority()){
             largest = r;
         }
 
