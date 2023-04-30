@@ -15,42 +15,42 @@ public class HashTabletest extends TestCase {
         Plane fly3= new Plane(/*numFLight*/ "Viagrafly",/*rows*/4,/*columns*/ 2,/*rowsfirstclass*/ 4);
     }
 	public void setUpStage4(){
-		Passenger s4p1 = new Passenger("olvir Eusebius",1110,"1a",10,0,2023-04-01 08:30:00);
-		Passenger s4p2 = new Passenger("Cassian Rufina",290123,"2b",100,0,2023-04-01 10:15:00);
-		Passenger s4p3 = new Passenger("Erkan Noriko",18200,"1c",1000,0,2023-04-01 11:00:00);
-		Passenger s4p4 = new Passenger("Harpreet Aleksandra",610340,"1d",250,0,2023-04-01 12:45:00);
-		Passenger s4p5 = new Passenger("Adalhaid Milda",950562,"2a",2500,1,2023-04-01 13:30:00);
-		Passenger s4p6 = new Passenger("Oskars Muthoni",396014,"1e",25,2,2023-04-01 15:00:00);
-		Passenger s4p7 = new Passenger("Anastasia Amahle",1130584,"2c",365,0,2023-04-01 16:15:00);
-		Passenger s4p8 = new Passenger("Yasen Alaric",851944,"2d",653,5,2023-04-01 18:00:00);
-		Passenger s4p9 = new Passenger("Rozalija Raginaharjaz",1042984,"2e",536,3,2023-04-01 19:45:00);
-		Passenger s4p10 = new Passenger("Yarik Komang",44100,"1b",9564,4,2023-04-01 20:30:00);
+		Passenger s4p1 = new Passenger("olvir Eusebius",1110,"1a",0,10);
+		Passenger s4p2 = new Passenger("Cassian Rufina",290123,"2b",0,100);
+		Passenger s4p3 = new Passenger("Erkan Noriko",18200,"1c",0,1000);
+		Passenger s4p4 = new Passenger("Harpreet Aleksandra",610340,"1d",0,250);
+		Passenger s4p5 = new Passenger("Adalhaid Milda",950562,"2a",1,2500);
+		Passenger s4p6 = new Passenger("Oskars Muthoni",396014,"1e",2,25);
+		Passenger s4p7 = new Passenger("Anastasia Amahle",1130584,"2c",0,365);
+		Passenger s4p8 = new Passenger("Yasen Alaric",851944,"2d",5,653);
+		Passenger s4p9 = new Passenger("Rozalija Raginaharjaz",1042984,"2e",3,536);
+		Passenger s4p10 = new Passenger("Yarik Komang",44100,"1b",4,9564);
 	}
 	public void setUpStage5(){
-		Passenger s5p1 = new Passenger("olvir Eusebius",1110,"1a",0,0,2023-04-01 08:30:00);
-		Passenger s5p2 = new Passenger("Cassian Rufina",290123,"2b",0,0,2023-04-01 10:15:00);
-		Passenger s5p3 = new Passenger("Harpreet Aleksandra",18200,"3c",0,0,2023-04-01 11:00:00);
-		Passenger s5p4 = new Passenger("Oskars Muthoni",610340,"4d",0,0,2023-04-01 12:45:00);
-		Passenger s5p5 = new Passenger("Anastasia Amahle",950562,"2a",0,0,2023-04-01 13:30:00);
-		Passenger s5p6 = new Passenger("Yasen Alaric",396014,"1b",0,0,2023-04-01 15:00:00);
-		Passenger s5p7 = new Passenger("Rozalija Raginaharjaz",1130584,"2c",0,0,2023-04-01 16:15:00);
-		Passenger s5p8 = new Passenger("Yarik Komang",851944,"1d",0,0,2023-04-01 18:00:00);
+		Passenger s5p1 = new Passenger("olvir Eusebius",1110,"1a",0,0);
+		Passenger s5p2 = new Passenger("Cassian Rufina",290123,"2b",0,0);
+		Passenger s5p3 = new Passenger("Harpreet Aleksandra",18200,"3c",0,0);
+		Passenger s5p4 = new Passenger("Oskars Muthoni",610340,"4d",0,0);
+		Passenger s5p5 = new Passenger("Anastasia Amahle",950562,"2a",0,0);
+		Passenger s5p6 = new Passenger("Yasen Alaric",396014,"1b",0,0);
+		Passenger s5p7 = new Passenger("Rozalija Raginaharjaz",1130584,"2c",0,0);
+		Passenger s5p8 = new Passenger("Yarik Komang",851944,"1d",0,0);
 	}
 	public void setUpStage6(){
-		Passenger s6p1 = new Passenger("olvir Eusebius",1110,"1a",350,1,2023-04-01 08:30:00);
-		Passenger s6p2 = new Passenger("Cassian Rufina",290123,"2b",125,2,2023-04-01 10:15:00);
-		Passenger s6p3 = new Passenger("Harpreet Aleksandra",18200,"3c",500,3,2023-04-01 11:00:00);
-		Passenger s6p4 = new Passenger("Oskars Muthoni",610340,"4d",95,4,2023-04-01 12:45:00);
-		Passenger s6p5 = new Passenger("Anastasia Amahle",950562,"2a",350,5,2023-04-01 13:30:00);
-		Passenger s6p6 = new Passenger("Yasen Alaric",396014,"1b",95,1,2023-04-01 15:00:00);
-		Passenger s6p7 = new Passenger("Rozalija Raginaharjaz",1130584,"2c",125,4,2023-04-01 16:15:00);
-		Passenger s6p8 = new Passenger("Yarik Komang",851944,"1d",500,2,2023-04-01 18:00:00);
+		Passenger s6p1 = new Passenger("olvir Eusebius",1110,"1a",1,350);
+		Passenger s6p2 = new Passenger("Cassian Rufina",290123,"2b",2,125);
+		Passenger s6p3 = new Passenger("Harpreet Aleksandra",18200,"3c",3,500);
+		Passenger s6p4 = new Passenger("Oskars Muthoni",610340,"4d",4,95);
+		Passenger s6p5 = new Passenger("Anastasia Amahle",950562,"2a",5,350);
+		Passenger s6p6 = new Passenger("Yasen Alaric",396014,"1b",1,95);
+		Passenger s6p7 = new Passenger("Rozalija Raginaharjaz",1130584,"2c",4,125);
+		Passenger s6p8 = new Passenger("Yarik Komang",851944,"1d",2,500);
 	}
 	public void setUpStage8(){
-		Passenger s8p1 = new Passenger("olvir Eusebius",1110,"1a",350,1,2023-04-01 08:30:00);
+		Passenger s8p1 = new Passenger("olvir Eusebius",1110,"1a",1,350);
 	}
 	public void setUpStage9(){
-		Passenger s9p1 = new Passenger("anatoly karpov",1110290182,"4a",908,0,2023-04-01 08:35:00);
+		Passenger s9p1 = new Passenger("anatoly karpov",1110290182,"4a",0,908);
 	}
 	
 	
