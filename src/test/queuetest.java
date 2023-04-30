@@ -1,7 +1,5 @@
 package test;
 import junit.framework.TestCase;
-
-import java.time.LocalDateTime;
 import java.util.*;
 import model.*;
 import Exeptions.*;
@@ -17,7 +15,7 @@ public class queuetest extends TestCase {
         Plane fly3= new Plane(/*numFLight*/ "Viagrafly",/*rows*/4,/*columns*/ 2,/*rowsfirstclass*/ 4);
     }
 	public void setUpStage4(){
-		Passenger s4p1 = new Passenger("olvir Eusebius",1110,"1a",10,0, LocalDateTime.of(2023,4,1,8,30,0));
+		Passenger s4p1 = new Passenger("olvir Eusebius",1110,"1a",10,0,2023-04-01 08:30:00);
 		Passenger s4p2 = new Passenger("Cassian Rufina",290123,"2b",100,0,2023-04-01 10:15:00);
 		Passenger s4p3 = new Passenger("Erkan Noriko",18200,"1c",1000,0,2023-04-01 11:00:00);
 		Passenger s4p4 = new Passenger("Harpreet Aleksandra",610340,"1d",250,0,2023-04-01 12:45:00);
