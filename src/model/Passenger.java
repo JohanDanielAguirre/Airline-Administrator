@@ -108,13 +108,18 @@ public class Passenger{
     public void setPriority(int priority) {
         this.priority = priority;
     }
-    
+
+    public TypeHelp getTypeHelp() {
+        return typeHelp;
+    }
+
+    public void setTypeHelp(TypeHelp typeHelp) {
+        this.typeHelp = typeHelp;
+    }
+
     public void calculatePriority() {
-        if(firstClass){
-            priority = priority +1;
-        }
-        priority = priority + miles/1000;
-        
+
+
     }
 
 
