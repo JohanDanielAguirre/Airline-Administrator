@@ -26,7 +26,7 @@ public class HashTabletest extends TestCase {
 		PassengerNode s4p9 = new PassengerNode("2e",new Passenger("Rozalija Raginaharjaz",1042984,"2e",3,536));
 		PassengerNode s4p10 = new PassengerNode("1b",new Passenger("Yarik Komang",44100,"1b",4,9564));
 
-		ArrayList<PassengerNode> passengers = new ArrayList<>();
+		ArrayList<PassengerNode<String,Passenger>> passengers = new ArrayList<>();
 		passengers.add(s4p1);
 		passengers.add(s4p2);
 		passengers.add(s4p3);
@@ -49,7 +49,7 @@ public class HashTabletest extends TestCase {
 		PassengerNode s5p6 = new PassengerNode("1b",new Passenger("Yasen Alaric",396014,"1b",0,0));
 		PassengerNode s5p7 = new PassengerNode("2c",new Passenger("Rozalija Raginaharjaz",1130584,"2c",0,0));
 		PassengerNode s5p8 = new PassengerNode("1d",new Passenger("Yarik Komang",851944,"1d",0,0));
-		ArrayList<PassengerNode> passengers = new ArrayList<>();
+		ArrayList<PassengerNode<String,Passenger>> passengers = new ArrayList<>();
 		passengers.add(s5p1);
 		passengers.add(s5p2);
 		passengers.add(s5p3);
@@ -69,7 +69,7 @@ public class HashTabletest extends TestCase {
 		PassengerNode s6p6 = new PassengerNode("1b",new Passenger("Yasen Alaric",396014,"1b",1,95));
 		PassengerNode s6p7 = new PassengerNode("2c",new Passenger("Rozalija Raginaharjaz",1130584,"2c",4,125));
 		PassengerNode s6p8 = new PassengerNode("1d",new Passenger("Yarik Komang",851944,"1d",2,500));
-		ArrayList<PassengerNode> passengers = new ArrayList<>();
+		ArrayList<PassengerNode<String,Passenger>> passengers = new ArrayList<>();
 		passengers.add(s6p1);
 		passengers.add(s6p2);
 		passengers.add(s6p3);
@@ -82,53 +82,52 @@ public class HashTabletest extends TestCase {
 	}
 	public ArrayList setUpStage8(){
 		PassengerNode s8p1 = new PassengerNode("1a",new Passenger("olvir Eusebius",1110,"1a",1,350));
-		ArrayList<PassengerNode> passengers = new ArrayList<>();
+		ArrayList<PassengerNode<String,Passenger>> passengers = new ArrayList<>();
 		passengers.add(s8p1);
 		return passengers;
 	}
 	public ArrayList setUpStage9(){
 		PassengerNode s9p1 = new PassengerNode("4a",new Passenger("anatoly karpov",1110290182,"4a",0,908));
-		ArrayList<PassengerNode> passengers = new ArrayList<>();
+		ArrayList<PassengerNode<String,Passenger>> passengers = new ArrayList<>();
 		passengers.add(s9p1);
 		return passengers;
 	}
 	
 	
 	public void HashInserttest1(){
-	   setUpStage4();
-	   setUpStage8();
+		ArrayList<PassengerNode<String,Passenger>> pass = new ArrayList<>(setUpStage4());
+		ArrayList<PassengerNode<String,Passenger>> pass2 = new ArrayList<>(setUpStage8());
 	   try{
-		   HashTable has= new HashTable(1);
-		   has.insert(s4p1.getticket(),s4p1);
-		   has.insert(s4p2.getticket(),s4p2);
-		   has.insert(s4p3.getticket(),s4p3);
-		   has.insert(s4p4.getticket(),s4p4);
-		   has.insert(s4p5.getticket(),s4p5);
-		   has.insert(s4p6.getticket(),s4p6);
-		   has.insert(s4p7.getticket(),s4p7);
-		   has.insert(s4p8.getticket(),s4p8);
-		   has.insert(s4p9.getticket(),s4p9);
-		   has.insert(s4p10.getticket(),s4p10);
-		   has.insert(s8p1.getticket(),s8p1);
-		   assertEquals(11,has.getsize());
+		   HashTable<String,Passenger> has= new HashTable<String,Passenger>(1);
+		   has.insert(pass.get(0).getKey(), pass.get(0).getValue());
+		   has.insert(pass.get(1).getKey(), pass.get(1).getValue());
+		   has.insert(pass.get(2).getKey(), pass.get(2).getValue());
+		   has.insert(pass.get(3).getKey(), pass.get(3).getValue());
+		   has.insert(pass.get(4).getKey(), pass.get(4).getValue());
+		   has.insert(pass.get(5).getKey(), pass.get(5).getValue());
+		   has.insert(pass.get(6).getKey(), pass.get(6).getValue());
+		   has.insert(pass.get(7).getKey(), pass.get(7).getValue());
+		   has.insert(pass.get(8).getKey(), pass.get(8).getValue());
+		   has.insert(pass.get(9).getKey(), pass.get(9).getValue());
+		   has.insert(pass2.get(0).getKey(), pass2.get(0).getValue());
+		   assertEquals(11,has.getSize());
 	   }catch (Exception e){
 		   fail();
 	   }
     }
 	public void HashInserttest2(){
-        setUpStage6();
-		setUpStage8();
+		ArrayList<PassengerNode<String,Passenger>> pass = new ArrayList<>(setUpStage6());
+		ArrayList<PassengerNode<String,Passenger>> pass2 = new ArrayList<>(setUpStage8());
 		try{
-		   HashTable has= new HashTable(1);
-		   has.insert(s6p1.getticket(),s6p1);
-		   has.insert(s6p2.getticket(),s6p2);
-		   has.insert(s6p3.getticket(),s6p3);
-		   has.insert(s6p4.getticket(),s6p4);
-		   has.insert(s6p5.getticket(),s6p5);
-		   has.insert(s6p6.getticket(),s6p6);
-		   has.insert(s6p7.getticket(),s6p7);
-		   has.insert(s6p8.getticket(),s6p8);
-		   has.insert(s8p1.getticket(),s8p1);
+		   HashTable<String,Passenger> has= new HashTable<String,Passenger>(1);
+			has.insert(pass.get(0).getKey(), pass.get(0).getValue());
+			has.insert(pass.get(1).getKey(), pass.get(1).getValue());
+			has.insert(pass.get(2).getKey(), pass.get(2).getValue());
+			has.insert(pass.get(3).getKey(), pass.get(3).getValue());
+			has.insert(pass.get(4).getKey(), pass.get(4).getValue());
+			has.insert(pass.get(5).getKey(), pass.get(5).getValue());
+			has.insert(pass.get(6).getKey(), pass.get(6).getValue());
+			has.insert(pass2.get(0).getKey(), pass2.get(0).getValue());
 		   fail();
 		}catch(DuplicatedObjectExeption e){
 			assertNotNull(e);
@@ -146,40 +145,40 @@ public class HashTabletest extends TestCase {
     }
 	
 	public void HashDeletetest1(){
-	   setUpStage4();
-	   setUpStage8();
+		ArrayList<PassengerNode<String,Passenger>> pass = new ArrayList<>(setUpStage4());
+		ArrayList<PassengerNode<String,Passenger>> pass2 = new ArrayList<>(setUpStage8());
 	   try{
-		   HashTable has= new HashTable(1);
-		   has.insert(s4p1.getticket(),s4p1);
-		   has.insert(s4p2.getticket(),s4p2);
-		   has.insert(s4p3.getticket(),s4p3);
-		   has.insert(s4p4.getticket(),s4p4);
-		   has.insert(s4p5.getticket(),s4p5);
-		   has.insert(s4p6.getticket(),s4p6);
-		   has.insert(s4p7.getticket(),s4p7);
-		   has.insert(s4p8.getticket(),s4p8);
-		   has.insert(s4p9.getticket(),s4p9);
-		   has.insert(s4p10.getticket(),s4p10);
-		   has.delete(s8p1.getticket());
+		   HashTable<String,Passenger> has= new HashTable<String,Passenger>(1);
+		   has.insert(pass.get(0).getKey(), pass.get(0).getValue());
+		   has.insert(pass.get(1).getKey(), pass.get(1).getValue());
+		   has.insert(pass.get(2).getKey(), pass.get(2).getValue());
+		   has.insert(pass.get(3).getKey(), pass.get(3).getValue());
+		   has.insert(pass.get(4).getKey(), pass.get(4).getValue());
+		   has.insert(pass.get(5).getKey(), pass.get(5).getValue());
+		   has.insert(pass.get(6).getKey(), pass.get(6).getValue());
+		   has.insert(pass.get(7).getKey(), pass.get(7).getValue());
+		   has.insert(pass.get(8).getKey(), pass.get(8).getValue());
+		   has.insert(pass.get(9).getKey(), pass.get(9).getValue());
+		   has.delete(pass2.get(0).getKey());
 		   fail();
 	   }catch (NonexistObjectExeption e){
 		   assertNotNull(e);
 	   }
     }
 	public void HashDeletetest2(){
-        setUpStage6();
-		setUpStage8();
+		ArrayList<PassengerNode<String,Passenger>> pass = new ArrayList<>(setUpStage6());
+		ArrayList<PassengerNode<String,Passenger>> pass2 = new ArrayList<>(setUpStage8());
 		try{
-		   HashTable has= new HashTable(1);
-		   has.insert(s6p1.getticket(),s6p1);
-		   has.insert(s6p2.getticket(),s6p2);
-		   has.insert(s6p3.getticket(),s6p3);
-		   has.insert(s6p4.getticket(),s6p4);
-		   has.insert(s6p5.getticket(),s6p5);
-		   has.insert(s6p6.getticket(),s6p6);
-		   has.insert(s6p7.getticket(),s6p7);
-		   has.insert(s6p8.getticket(),s6p8);
-		   has.delete(s8p1.getticket(),s8p1);
+		   HashTable<String,Passenger> has= new HashTable<String,Passenger>(1);
+		   has.insert(pass.get(0).getKey(), pass.get(0).getValue());
+		   has.insert(pass.get(1).getKey(), pass.get(1).getValue());
+		   has.insert(pass.get(2).getKey(), pass.get(2).getValue());
+		   has.insert(pass.get(3).getKey(), pass.get(3).getValue());
+		   has.insert(pass.get(4).getKey(), pass.get(4).getValue());
+		   has.insert(pass.get(5).getKey(), pass.get(5).getValue());
+		   has.insert(pass.get(6).getKey(), pass.get(6).getValue());
+		   has.insert(pass.get(7).getKey(), pass.get(7).getValue());
+		   has.delete(pass2.get(0).getKey());
 		   assertEquals(7,has.getsize());
 		}catch(Exception e){
 			fail();
@@ -198,47 +197,46 @@ public class HashTabletest extends TestCase {
     }
 	
 	public void HashSearchtest1(){
-	   setUpStage4();
-	   setUpStage8();
+		ArrayList<PassengerNode<String,Passenger>> pass = new ArrayList<>(setUpStage4());
+		ArrayList<PassengerNode<String,Passenger>> pass2 = new ArrayList<>(setUpStage8());
 	   try{
-		   HashTable has= new HashTable(1);
-		   has.insert(s4p1.getticket(),s4p1);
-		   has.insert(s4p2.getticket(),s4p2);
-		   has.insert(s4p3.getticket(),s4p3);
-		   has.insert(s4p4.getticket(),s4p4);
-		   has.insert(s4p5.getticket(),s4p5);
-		   has.insert(s4p6.getticket(),s4p6);
-		   has.insert(s4p7.getticket(),s4p7);
-		   has.insert(s4p8.getticket(),s4p8);
-		   has.insert(s4p9.getticket(),s4p9);
-		   has.insert(s4p10.getticket(),s4p10);
-		   Passenger p= new Passenger(has.search(s8p1.getticket()));
+		   HashTable<String,Passenger> has= new HashTable<String,Passenger>(1);
+		   has.insert(pass.get(0).getKey(), pass.get(0).getValue());
+		   has.insert(pass.get(1).getKey(), pass.get(1).getValue());
+		   has.insert(pass.get(2).getKey(), pass.get(2).getValue());
+		   has.insert(pass.get(3).getKey(), pass.get(3).getValue());
+		   has.insert(pass.get(4).getKey(), pass.get(4).getValue());
+		   has.insert(pass.get(5).getKey(), pass.get(5).getValue());
+		   has.insert(pass.get(6).getKey(), pass.get(6).getValue());
+		   has.insert(pass.get(7).getKey(), pass.get(7).getValue());
+		   has.insert(pass.get(8).getKey(), pass.get(8).getValue());
+		   has.insert(pass.get(9).getKey(), pass.get(9).getValue());
+		   has.search(pass2.get(0).getKey());
 		   fail();
 	   }catch (NonexistObjectExeption e){
 		   assertNotNull(e);
 	   }
     }
 	public void HashSearchtest2(){
-        setUpStage6();
-		setUpStage8();
+		ArrayList<PassengerNode<String,Passenger>> pass = new ArrayList<>(setUpStage6());
+		ArrayList<PassengerNode<String,Passenger>> pass2 = new ArrayList<>(setUpStage8());
 		try{
-		   HashTable has= new HashTable(1);
-		   has.insert(s6p1.getticket(),s6p1);
-		   has.insert(s6p2.getticket(),s6p2);
-		   has.insert(s6p3.getticket(),s6p3);
-		   has.insert(s6p4.getticket(),s6p4);
-		   has.insert(s6p5.getticket(),s6p5);
-		   has.insert(s6p6.getticket(),s6p6);
-		   has.insert(s6p7.getticket(),s6p7);
-		   has.insert(s6p8.getticket(),s6p8);
-		   Passenger p= new Passenger (has.search(s8p1.getticket(),s8p1));
-		   Passenger s8p1 = new Passenger(" ",1110,1a,350,physical disability,2023-04-01 08:30:00);
-		   assertEquals("olvir Eusebius",p.getname());
-		   assertEquals(1110,p.getid());
-		   assertEquals(1a,p.getticket());
-		   assertEquals(350,p.getmiles());
-		   assertEquals(physical disability,p.gettypeofhelp());
-		   assertEquals(2023-04-01 08:30:00,p.getArrivaltime());
+		   HashTable<String,Passenger> has= new HashTable<String,Passenger>(1);
+		   has.insert(pass.get(0).getKey(), pass.get(0).getValue());
+		   has.insert(pass.get(1).getKey(), pass.get(1).getValue());
+		   has.insert(pass.get(2).getKey(), pass.get(2).getValue());
+		   has.insert(pass.get(3).getKey(), pass.get(3).getValue());
+		   has.insert(pass.get(4).getKey(), pass.get(4).getValue());
+		   has.insert(pass.get(5).getKey(), pass.get(5).getValue());
+		   has.insert(pass.get(6).getKey(), pass.get(6).getValue());
+		   has.insert(pass.get(7).getKey(), pass.get(7).getValue());;
+		   Passenger p = has.search(pass2.get(0).getValue().getTicket());
+		   Passenger s8p1 = new Passenger(" ",1110,"1a",350,1);
+		   assertEquals("olvir Eusebius",p.getName());
+		   assertEquals(1110,p.getId());
+		   assertEquals("1a",p.getTicket());
+		   assertEquals(350,p.getMiles());
+		   assertEquals("physical disability",p.getTypeHelp());
 		}catch(Exception e){
 			fail();
 		}
