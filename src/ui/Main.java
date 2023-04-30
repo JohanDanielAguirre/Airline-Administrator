@@ -2,6 +2,8 @@ package ui;
 
 import java.io.*;
 import java.util.Scanner;
+
+import Exeptions.IncorrectObjectExeption;
 import com.google.gson.Gson;
 import java.io.FileReader;
 import java.io.Reader;
@@ -76,7 +78,7 @@ public class Main{
 
     }
 
-    public void passengerEntry(){
+    public void passengerEntry() throws IncorrectObjectExeption {
         System.out.println("Enter the ticket of the passenger");
         String ticket = sc.nextLine();
 

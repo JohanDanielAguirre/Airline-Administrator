@@ -1,6 +1,10 @@
 package model;
 
 
+import Exeptions.DuplicatedObjectExeption;
+import Exeptions.IncorrectObjectExeption;
+import Exeptions.NonexistObjectExeption;
+
 @SuppressWarnings("unchecked")
 
 public class HashTable<K,V> implements iHashTable<K,V>{
@@ -31,7 +35,7 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 	 * @param value V, the value is the passenger that is being stored
 	 */
 	@Override
-	public void insert(K key, V val) {
+	public void insert(K key, V val) throws DuplicatedObjectExeption, IncorrectObjectExeption, NonexistObjectExeption {
 		
 		int position = hashFunction(key);
 		
@@ -77,7 +81,7 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 	 * @return the value V of the node found
 	 */
 	@Override
-	public V search(K key) {
+	public V search(K key) throws IncorrectObjectExeption{
 		
 		int position = this.hashFunction(key);
 		
@@ -101,14 +105,14 @@ public class HashTable<K,V> implements iHashTable<K,V>{
     }
 
 	/**
-	 * search: method to search a node by a given key 
+	 * search: method to search a node by a given key
 	 * @param key K, is the key of the object that is going to be found
 	 * @return the node that has the same key as the given param
 	 */
 	private PassengerNode<K,V> search2(K key) {
-		
+
 		int position = this.hashFunction(key);
-		
+
 		PassengerNode<K,V> toSearch = passengersInfo[position];
 		boolean flag = true;
 		if (toSearch != null) {
@@ -134,7 +138,7 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 	 * @return true if it was deleted or false if it couldn't delete the node
 	 */
 	@Override
-	public boolean delete(K key) {
+	public boolean delete(K key) throws IncorrectObjectExeption{
 		
 		int position = this.hashFunction(key);
 		

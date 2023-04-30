@@ -1,5 +1,8 @@
 package model;
 
+import Exeptions.DuplicatedObjectExeption;
+import Exeptions.IncorrectObjectExeption;
+import Exeptions.NonexistObjectExeption;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -25,16 +28,17 @@ public class AirlineAdministrator {
         return;
     }
 
-    public String addPassenger(Passenger passenger){
+    public String addPassenger(Passenger passenger) throws IncorrectObjectExeption, DuplicatedObjectExeption, NonexistObjectExeption {
         String msg = "";
 
         msg = "Se creo el pasajero de clase economica";
         passengersInfo.insert(passenger.getTicket(), passenger);
 
+
         return msg;
     }
 
-    public void addPassengersToPlane(String ticket){
+    public void addPassengersToPlane(String ticket) throws IncorrectObjectExeption {
 
         Passenger toPlane = passengersInfo.search(ticket);
         toPlane.setArrivalTime(LocalDateTime.now());
@@ -78,7 +82,7 @@ public class AirlineAdministrator {
 
         } catch (FileNotFoundException e) {
             System.err.println("File not found");
-        }catch (IOException e) {
+        }catch (IOException | IncorrectObjectExeption | DuplicatedObjectExeption | NonexistObjectExeption e) {
             e.printStackTrace();
         }
     }
@@ -101,7 +105,7 @@ public class AirlineAdministrator {
             }
         } catch (FileNotFoundException e) {
             System.err.println("File not found");
-        }catch (IOException e) {
+        }catch (IOException | IncorrectObjectExeption e) {
             e.printStackTrace();
         }
     }

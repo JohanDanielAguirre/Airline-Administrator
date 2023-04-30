@@ -5,14 +5,17 @@ import model.*;
 import Exeptions.*;
 public class HashTabletest extends TestCase {
 	
-    public void setUpStage1(){
+    public Plane setUpStage1(){
         Plane fly1= new Plane(/*numFLight*/ "MidgetAirlines",/*rows*/5,/*columns*/ 1,/*rowsfirstclass*/ 2);
+		return fly1;
     }
-	public void setUpStage2(){
+	public Plane setUpStage2(){
         Plane fly2= new Plane(/*numFLight*/ "Drugmaxdealer",/*rows*/4,/*columns*/ 2,/*rowsfirstclass*/ 0);
+		return fly2;
     }
-	public void setUpStage3(){
+	public Plane setUpStage3(){
         Plane fly3= new Plane(/*numFLight*/ "Viagrafly",/*rows*/4,/*columns*/ 2,/*rowsfirstclass*/ 4);
+		return fly3;
     }
 	public ArrayList setUpStage4(){
 		PassengerNode s4p1 = new PassengerNode("1a", new Passenger("olvir Eusebius",1110,"1a",0,10));
@@ -131,16 +134,20 @@ public class HashTabletest extends TestCase {
 		   fail();
 		}catch(DuplicatedObjectExeption e){
 			assertNotNull(e);
+		}catch (IncorrectObjectExeption | NonexistObjectExeption e){
+			fail();
 		}
     }
 	public void HashInserttest3(){
-      setUpStage1();
+      Plane fly1 = setUpStage1();
 	  try{
 		HashTable has= new HashTable(1);
-		has.insert(fly1.getnumflight(),fly1);
+		has.insert(fly1.getNumFlight(),fly1);
 		fail();
 	  }catch(IncorrectObjectExeption e){
 		 assertNotNull(e); 
+	  }catch (DuplicatedObjectExeption | NonexistObjectExeption e){
+		  fail();
 	  }
     }
 	
@@ -163,6 +170,8 @@ public class HashTabletest extends TestCase {
 		   fail();
 	   }catch (NonexistObjectExeption e){
 		   assertNotNull(e);
+	   }catch (DuplicatedObjectExeption | IncorrectObjectExeption e){
+		   fail();
 	   }
     }
 	public void HashDeletetest2(){
@@ -179,17 +188,17 @@ public class HashTabletest extends TestCase {
 		   has.insert(pass.get(6).getKey(), pass.get(6).getValue());
 		   has.insert(pass.get(7).getKey(), pass.get(7).getValue());
 		   has.delete(pass2.get(0).getKey());
-		   assertEquals(7,has.getsize());
+		   assertEquals(7,has.getSize());
 		}catch(Exception e){
 			fail();
 		}
     }
 	
 	public void HashDeletetest3(){
-      setUpStage1();
+      Plane fly1 = setUpStage1();
 	  try{
 		HashTable has= new HashTable(1);
-		has.delete(fly1.getnumflight());
+		has.delete(fly1.getNumFlight());
 		fail();
 	  }catch(IncorrectObjectExeption e){
 		 assertNotNull(e); 
@@ -215,6 +224,8 @@ public class HashTabletest extends TestCase {
 		   fail();
 	   }catch (NonexistObjectExeption e){
 		   assertNotNull(e);
+	   } catch (Exception e){
+		   fail();
 	   }
     }
 	public void HashSearchtest2(){
@@ -243,13 +254,13 @@ public class HashTabletest extends TestCase {
     }
 	
 	public void HashSearchtest3(){
-      setUpStage1();
+      Plane fly1 = setUpStage1();
 	  try{
 		HashTable has= new HashTable(1);
-		has.search(fly1.getnumflight());
+		has.search(fly1.getNumFlight());
 		fail();
 	  }catch(IncorrectObjectExeption e){
-		 assertNotNull(e); 
+		 assertNotNull(e);
 	  }
     }
 	
