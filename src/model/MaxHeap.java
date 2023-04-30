@@ -8,12 +8,14 @@ public class MaxHeap implements iMaxPriorityQueue{
 
     public MaxHeap(int capacity){
         passengers = new Passenger[capacity];
+        heapSize = 0;
     }
 
     @Override
     public void insert(Passenger passenger) {
         heapSize = heapSize + 1;
-        passengers[heapSize] = passenger; 
+        passengers[heapSize] = passenger;
+        increase_Key(passengers.length, heapSize); 
     }
 
     @Override
@@ -40,14 +42,14 @@ public class MaxHeap implements iMaxPriorityQueue{
     @Override
     public void increase_Key(int x, int newKey) {
        
-        if(passengers[x].getPriority() > newKey){
+        if(passengers[x].compareTo(passengers[newKey]) > 0){
             return;
         }
 
-        passengers[0].setPriority(newKey);
+        passengers[0] = passengers[newKey];
         
         
-        while(x>0 && passengers[parent(x)].getPriority()<passengers[x].getPriority()){
+        while(x>0 && passengers[parent(x)].compareTo(passengers[x])<0){
             Passenger swap = passengers[x];
 
             passengers[x] = passengers[parent(x)];
@@ -72,13 +74,13 @@ public class MaxHeap implements iMaxPriorityQueue{
         int r = right(i);
 
         int largest;
-        if(l<=heapSize && passengers[l].getPriority() > passengers[i].getPriority()){
+        if(l<=heapSize && passengers[l].compareTo(passengers[i]) > 0){
             largest = l;
         }else {
             largest = i;
         }
 
-        if(r<=heapSize && passengers[r].getPriority() > passengers[largest].getPriority()){
+        if(r<=heapSize && passengers[r].compareTo(passengers[largest]) > 0){
             largest = r;
         }
 
