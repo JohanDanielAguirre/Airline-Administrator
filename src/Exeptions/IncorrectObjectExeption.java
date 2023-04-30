@@ -1,7 +1,7 @@
 package Exeptions;
 
 public class IncorrectObjectExeption extends Exception{
-    public IncorretObjectExeption(String text){
+    public IncorrectObjectExeption(String text){
         super(text);
     }
 }
