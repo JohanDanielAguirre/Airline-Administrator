@@ -17,10 +17,9 @@ public class Plane {
     public Plane(String numF, int rows, int columns, int firstClassRows){
         this.numFlight = numF;
         passengers = new HashTable<>(rows*columns);
-        entry = new MaxHeap<>();
+        entry = new MaxHeap<>(rows*columns);
         this.rows = rows;
         this.columns = columns;
-        this.entry = new MaxHeap<>();
         this.firstClassRows = firstClassRows;
     }
 

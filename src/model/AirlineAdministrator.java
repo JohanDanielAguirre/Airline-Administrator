@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public class AirlineAdministrator {
     
-    private HashTable<Long,Passenger> passengersInfo;
+    private HashTable<String,Passenger> passengersInfo;
 
     private Plane plane;
 
@@ -25,13 +25,13 @@ public class AirlineAdministrator {
         String msg = "";
 
         msg = "Se creo el pasajero de clase economica";
-        passengersInfo.insert(passenger.getId(), passenger);
+        passengersInfo.insert(passenger.getTicket(), passenger);
 
         return msg;
     }
 
-    public void addArrival(long id, Calendar calendar){
-        passengersInfo.search(id).setArrivalTime(calendar);
+    public void addArrival(String ticket, Calendar calendar){
+        passengersInfo.search(ticket).setArrivalTime(calendar);
         return;
     }
 
@@ -78,6 +78,7 @@ public class AirlineAdministrator {
             e.printStackTrace();
         }
     }
+
     public void jsonArrivalTimeInfo(){
 
         Gson gson = new Gson();
@@ -86,11 +87,11 @@ public class AirlineAdministrator {
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(arrivalTimeInfoFile));
-            Type arrivalTimeType = new TypeToken<HashMap<Long, Calendar>>(){}.getType();
-            HashMap<Long, Calendar> arrivalTimeMap = gson.fromJson(reader, arrivalTimeType);
+            Type arrivalTimeType = new TypeToken<HashMap<String, Calendar>>(){}.getType();
+            HashMap<String, Calendar> arrivalTimeMap = gson.fromJson(reader, arrivalTimeType);
             reader.close();
 
-            for (Long id : arrivalTimeMap.keySet()) {
+            for (String id : arrivalTimeMap.keySet()) {
                 Calendar arrivalTime = arrivalTimeMap.get(id);
                 passengersInfo.search(id).setArrivalTime(arrivalTime);
             }
