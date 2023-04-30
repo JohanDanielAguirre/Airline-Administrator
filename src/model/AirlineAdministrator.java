@@ -40,10 +40,10 @@ public class AirlineAdministrator {
         return;
     }
 
-    public void jsonInFlightInfo(){
+    public void jsonInFlightInfo(String filePath){
         Gson gson = new Gson();
         File dataDirectory = new File("data");
-        File flightInfoFile = new File(dataDirectory, "flightInfo.json");
+        File flightInfoFile = new File(dataDirectory, filePath);
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(flightInfoFile));
@@ -58,10 +58,10 @@ public class AirlineAdministrator {
         }
     }
 
-    public void jsonInFlightPassengerInfo(){
+    public void jsonInFlightPassengerInfo(String filePath){
         Gson gson = new Gson();
         File dataDirectory = new File("data");
-        File passengerInfoFile = new File(dataDirectory, "passengerInfo.json");
+        File passengerInfoFile = new File(dataDirectory, filePath);
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(passengerInfoFile));
@@ -79,11 +79,11 @@ public class AirlineAdministrator {
         }
     }
 
-    public void jsonArrivalTimeInfo(){
+    public void jsonArrivalTimeInfo(String filePath){
 
         Gson gson = new Gson();
         File dataDirectory = new File("data");
-        File arrivalTimeInfoFile = new File(dataDirectory, "arrivalTimeInfo.json");
+        File arrivalTimeInfoFile = new File(dataDirectory, filePath);
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(arrivalTimeInfoFile));

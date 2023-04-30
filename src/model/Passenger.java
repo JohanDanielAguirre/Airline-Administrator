@@ -57,12 +57,13 @@ public class Passenger implements Comparable<Passenger>{
                 '}';
     }
 
-    public Passenger(String name, long id, String ticket,int tHelp, int miles){
+    public Passenger(String name, long id, String ticket,int tHelp, int miles, Calendar arrivalTime){
 
         this.name = name;
         this.ticket = ticket;
         this.id =id;
         this.miles = miles;
+        this.ArrivalTime = arrivalTime;
         priority = 0;
 
         switch (tHelp) {

@@ -50,11 +50,11 @@ public class Main{
         sc.nextLine();
         switch(op){
             case 1:
-                admin.jsonInFlightInfo();
-                admin.jsonInFlightPassengerInfo();
+                admin.jsonInFlightInfo("flightInfo.json");
+                admin.jsonInFlightPassengerInfo("passengerInfo.json");
                 break;
             case 2:
-                admin.jsonArrivalTimeInfo();
+                admin.jsonArrivalTimeInfo("arrivalInfo.json");
                 break;
             case 3:
                 passengerEntry();
