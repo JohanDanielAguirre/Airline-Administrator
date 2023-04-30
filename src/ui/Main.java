@@ -1,13 +1,12 @@
 package ui;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Scanner;
 import com.google.gson.Gson;
 import java.io.FileReader;
 import java.io.Reader;
-import java.nio.charset.StandardCharsets;
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;    
 
 import model.AirlineAdministrator;
 
@@ -15,11 +14,17 @@ public class Main{
     
     public Scanner sc;
     private AirlineAdministrator admin;
+    DateTimeFormatter dtf;
+    LocalDateTime now;
+
     
     public static void main(String[] args) {
 
         System.out.println("Welcome to Airline Administrator\n" +
         "Initializing app...");
+
+         
+        
 
         Main oMain = new Main();
 
@@ -29,11 +34,15 @@ public class Main{
             op = oMain.Menu();
         } while (op != 0);
 
+        
+
     }
 
     public Main(){
         sc = new Scanner(System.in);
         admin = new AirlineAdministrator();
+        dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        
     }
 
     public int Menu(){
@@ -44,6 +53,7 @@ public class Main{
         "[1] Load passenger's and flight's information\n" +
         "[2] Load passenger arrival time\n"+
         "[3] Enter a passengers to the plane\n"+
+        "[4] Exit passengers off the plane\n" +
         "[0] Exit\n");
 
         op = sc.nextInt();
@@ -67,6 +77,9 @@ public class Main{
     }
 
     public void passengerEntry(){
-        admin.addPassengersToPlane();
+        System.out.println("Enter the ticket of the passenger");
+        String ticket = sc.nextLine();
+
+        admin.addPassengersToPlane(ticket);
     }
 }

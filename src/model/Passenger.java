@@ -1,13 +1,15 @@
 package model;
 
-import java.util.Calendar;
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;
 
 public class Passenger implements Comparable<Passenger>{
 
     private String name;
     private long id;
     private String ticket;
-    private Calendar ArrivalTime;
+    private DateTimeFormatter dtf;
+    private LocalDateTime ArrivalTime;
     private int miles;
     private TypeHelp typeHelp;
 
@@ -39,11 +41,11 @@ public class Passenger implements Comparable<Passenger>{
         this.ticket = ticket;
     }
 
-    public Calendar getArrivalTime() {
+    public LocalDateTime getArrivalTime() {
         return ArrivalTime;
     }
 
-    public void setArrivalTime(Calendar arrivalTime) {
+    public void setArrivalTime(LocalDateTime arrivalTime) {
         ArrivalTime = arrivalTime;
     }
 
@@ -53,7 +55,7 @@ public class Passenger implements Comparable<Passenger>{
                 "name=" + name + '\'' +
                 ", id=" + id +
                 ", ticket=" + ticket + '\'' +
-                ", ArrivalTime=" + ArrivalTime +
+                ", ArrivalTime=" + dtf.format(ArrivalTime) +
                 '}';
     }
 
@@ -90,6 +92,8 @@ public class Passenger implements Comparable<Passenger>{
                 typeHelp = null;
                 break;
         }
+
+        dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
 
     }
 

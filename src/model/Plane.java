@@ -6,7 +6,7 @@ public class Plane {
 
     private MaxHeap entry;
 
-    private HashTable<Long,Passenger> passengers;
+    private HashTable<String,Passenger> passengers;
 
     private int rows;
 
@@ -64,5 +64,16 @@ public class Plane {
                 ", rows=" + rows +
                 ", columns=" + columns +
                 '}';
+    }
+
+    public MaxHeap getEntry() {
+        return entry;
+    }
+
+    public void fillPassengers(){
+        for(int i = 0; i<rows*columns;i++){
+            Passenger passenger = entry.Maximum();
+            passengers.insert(passenger.getTicket(), passenger);
+        }
     }
 }

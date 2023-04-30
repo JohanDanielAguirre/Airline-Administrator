@@ -5,9 +5,10 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;
 
 public class AirlineAdministrator {
     
@@ -15,9 +16,12 @@ public class AirlineAdministrator {
 
     private Plane plane;
 
-    public void AirlineAdministrator(String flightNum, int rows, int columns, int firstClassRows){
+    DateTimeFormatter dtf;
+    LocalDateTime now;
+
+    public void AirlineAdministratorInfo(String flightNum, int rows, int columns, int firstClassRows){
         passengersInfo = new HashTable<>(rows*columns);
-        plane = new Plane(flightNum, rows, columns, firstClassRows);
+        plane = new Plane(flightNum, rows, columns, firstClassRows); 
         return;
     }
 
@@ -30,13 +34,13 @@ public class AirlineAdministrator {
         return msg;
     }
 
-    public void addArrival(String ticket, Calendar calendar){
-        passengersInfo.search(ticket).setArrivalTime(calendar);
-        return;
-    }
+    public void addPassengersToPlane(String ticket){
 
-    public void addPassengersToPlane(){
+        Passenger toPlane = passengersInfo.search(ticket);
+        toPlane.setArrivalTime(LocalDateTime.now());
 
+        plane.getEntry().insert(toPlane);
+        
         return;
     }
 
@@ -50,7 +54,7 @@ public class AirlineAdministrator {
             Plane[] planes = gson.fromJson(reader, Plane[].class);
             reader.close();
 
-            AirlineAdministrator(planes[0].getNumFlight(), planes[0].getRows(), planes[0].getColumns(), planes[0].getFirstClassRows());
+            AirlineAdministratorInfo(planes[0].getNumFlight(), planes[0].getRows(), planes[0].getColumns(), planes[0].getFirstClassRows());
         } catch (FileNotFoundException e) {
             System.err.println("File not found");
         }catch (IOException e) {
@@ -88,11 +92,11 @@ public class AirlineAdministrator {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(arrivalTimeInfoFile));
             Type arrivalTimeType = new TypeToken<HashMap<String, Calendar>>(){}.getType();
-            HashMap<String, Calendar> arrivalTimeMap = gson.fromJson(reader, arrivalTimeType);
+            HashMap<String, LocalDateTime> arrivalTimeMap = gson.fromJson(reader, arrivalTimeType);
             reader.close();
 
             for (String id : arrivalTimeMap.keySet()) {
-                Calendar arrivalTime = arrivalTimeMap.get(id);
+                LocalDateTime arrivalTime = arrivalTimeMap.get(id);
                 passengersInfo.search(id).setArrivalTime(arrivalTime);
             }
         } catch (FileNotFoundException e) {
