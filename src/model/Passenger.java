@@ -17,48 +17,6 @@ public class Passenger implements Comparable<Passenger>{
 
     private int priority;
 
-    public String getName() {
-        return name;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getTicket() {
-        return ticket;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setTicket(String ticket) {
-        this.ticket = ticket;
-    }
-
-    public LocalDateTime getArrivalTime() {
-        return ArrivalTime;
-    }
-
-    public void setArrivalTime(LocalDateTime arrivalTime) {
-        ArrivalTime = arrivalTime;
-    }
-
-    @Override
-    public String toString() {
-        return "Passenger{" +
-                "name=" + name + '\'' +
-                ", id=" + id +
-                ", ticket=" + ticket + '\'' +
-                ", ArrivalTime=" + dtf.format(ArrivalTime) +
-                '}';
-    }
-
     public Passenger(String name, long id, String ticket,int tHelp, int miles){
 
         this.name = name;
@@ -93,8 +51,48 @@ public class Passenger implements Comparable<Passenger>{
                 break;
         }
 
-        dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
+        dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getTicket() {
+        return ticket;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setTicket(String ticket) {
+        this.ticket = ticket;
+    }
+
+    public LocalDateTime getArrivalTime() {
+        return ArrivalTime;
+    }
+
+    public void setArrivalTime(LocalDateTime arrivalTime) {
+        ArrivalTime = arrivalTime;
+    }
+
+    public boolean isFirstClass() {
+        return firstClass;
+    }
+
+    public void setFirstClass(boolean firstClass) {
+        this.firstClass = firstClass;
     }
 
     public int getPriority() {
@@ -121,9 +119,21 @@ public class Passenger implements Comparable<Passenger>{
         this.typeHelp = typeHelp;
     }
 
+
+
     public void calculatePriority() {
 
 
+    }
+
+    @Override
+    public String toString() {
+        return "Passenger{" +
+                "name=" + name + '\'' +
+                ", id=" + id +
+                ", ticket=" + ticket + '\'' +
+                ", ArrivalTime=" + dtf.format(ArrivalTime) +
+                '}';
     }
 
     @Override

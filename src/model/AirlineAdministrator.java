@@ -77,6 +77,10 @@ public class AirlineAdministrator {
             reader.close();
 
             for(int i = 0; i<passengers.length; i++){
+                String str = passengers[i].getTicket();
+                String[] parts = str.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
+                String part2 = parts[1];
+                passengers[i].setFirstClass(determinateFirstclass(passengers[i], part2));
                 addPassenger(passengers[i]);
             }
 
@@ -107,6 +111,42 @@ public class AirlineAdministrator {
             System.err.println("File not found");
         }catch (IOException | IncorrectObjectExeption e) {
             e.printStackTrace();
+        }
+    }
+
+    public boolean determinateFirstclass(Passenger p,String letter){
+        int n=0;
+        switch (letter){
+            case "a": n=1;break;
+            case "b":n=2 ;break;
+            case "c":n=3 ;break;
+            case "d":n=4 ;break;
+            case "e":n=5 ;break;
+            case "f":n=6 ;break;
+            case "g":n=7 ;break;
+            case "h":n=8 ;break;
+            case "i":n=9 ;break;
+            case "j":n=10 ;break;
+            case "k":n=11 ;break;
+            case "l":n=12 ;break;
+            case "m":n=13 ;break;
+            case "n":n=14 ;break;
+            case "o":n=15 ;break;
+            case "p":n=16 ;break;
+            case "q":n=17 ;break;
+            case "r":n=18 ;break;
+            case "s":n=19 ;break;
+            case "t":n=20 ;break;
+            case "u":n=21 ;break;
+            case "w":n=22 ;break;
+            case "x":n=23 ;break;
+            case "y":n=24 ;break;
+            case "z":n=25 ;break;
+        }
+        if(n<=plane.getFirstClassRows()){
+            return true;
+        } else {
+            return false;
         }
     }
 

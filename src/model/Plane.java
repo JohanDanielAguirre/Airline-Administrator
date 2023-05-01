@@ -3,10 +3,7 @@ package model;
 import Exeptions.DuplicatedObjectExeption;
 import Exeptions.IncorrectObjectExeption;
 import Exeptions.NonexistObjectExeption;
-<<<<<<< HEAD
-=======
 import Exeptions.SizePlaneExeption;
->>>>>>> 6ac3447da9f4672baf7e0b06002a456329f549bd
 
 public class Plane {
     
