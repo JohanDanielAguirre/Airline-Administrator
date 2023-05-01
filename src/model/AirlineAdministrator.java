@@ -127,6 +127,13 @@ public class AirlineAdministrator {
         }
     }
 
+    public void passengerExit(){
+        for(int i = 0; i < plane.getEntry().heapSize; i++){
+           // plane.getEntry()
+        }
+        return;
+    }
+
     public boolean determinateFirstclass(Passenger p,String letter){
         int n=0;
         switch (letter){
