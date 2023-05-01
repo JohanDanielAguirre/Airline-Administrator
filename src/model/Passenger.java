@@ -120,12 +120,6 @@ public class Passenger implements Comparable<Passenger>{
     }
 
 
-
-    public void calculatePriority() {
-
-
-    }
-
     @Override
     public String toString() {
         return "Passenger{" +
