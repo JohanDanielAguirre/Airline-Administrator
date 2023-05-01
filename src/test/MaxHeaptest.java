@@ -103,6 +103,8 @@ public class MaxHeaptest extends TestCase {
 		   fail();
 		}catch(NonexistObjectExeption e){
 			assertNotNull(e);
+		}catch (SizePlaneExeption | KeyExeption e){
+			fail();
 		}
     }
 	public void MaxHeapinserttest3(){
@@ -196,8 +198,8 @@ public class MaxHeaptest extends TestCase {
 		Plane fly1 = setUpStage1();
 	   try{
 		   MaxHeap mh= new MaxHeap(0);
-		   Passenger p= new Passenger(mh.Maximum());
-		   assertEquals(null,p);
+
+		   assertEquals(null,mh.Maximum());
 		   assertEquals(0,mh.getHeapSize());
 	    }catch (Exception e){
 		   fail();
@@ -229,6 +231,8 @@ public class MaxHeaptest extends TestCase {
 		   fail();
 	    }catch(KeyExeption e){
 			assertNotNull(e);
+		}catch (SizePlaneExeption | NonexistObjectExeption e){
+			fail();
 		}
     }
 	
@@ -242,6 +246,8 @@ public class MaxHeaptest extends TestCase {
 		   fail();
 	    }catch(SizePlaneExeption e){
 			assertNotNull(e);
+		}catch (KeyExeption | NonexistObjectExeption e){
+			fail();
 		}
     }
 	public void Maxheapincreasekeytest3(){
