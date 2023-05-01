@@ -3,6 +3,10 @@ package model;
 import Exeptions.DuplicatedObjectExeption;
 import Exeptions.IncorrectObjectExeption;
 import Exeptions.NonexistObjectExeption;
+<<<<<<< HEAD
+=======
+import Exeptions.SizePlaneExeption;
+>>>>>>> 6ac3447da9f4672baf7e0b06002a456329f549bd
 
 public class Plane {
     
@@ -74,7 +78,7 @@ public class Plane {
         return entry;
     }
 
-    public void fillPassengers(){
+    public void fillPassengers() throws IncorrectObjectExeption, DuplicatedObjectExeption, NonexistObjectExeption {
         for(int i = 0; i<rows*columns;i++){
             Passenger passenger = entry.Maximum();
             try {
