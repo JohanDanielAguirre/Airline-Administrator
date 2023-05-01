@@ -68,7 +68,9 @@ public class Main{
                 passengerEntry();
                 break;
             case 4:
+                admin.fillPassengers();
                 admin.passengerExit();
+                break;
 
         }
 

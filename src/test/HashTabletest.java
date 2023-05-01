@@ -17,17 +17,17 @@ public class HashTabletest extends TestCase {
         Plane fly3= new Plane(/*numFLight*/ "Viagrafly",/*rows*/4,/*columns*/ 2,/*rowsfirstclass*/ 4);
 		return fly3;
     }
-	public ArrayList setUpStage4(){
-		PassengerNode s4p1 = new PassengerNode("1a", new Passenger("olvir Eusebius",1110,"1a",0,10));
-		PassengerNode s4p2 = new PassengerNode("2b",new Passenger("Cassian Rufina",290123,"2b",0,100));
-		PassengerNode s4p3 = new PassengerNode("1c",new Passenger("Erkan Noriko",18200,"1c",0,1000));
-		PassengerNode s4p4 = new PassengerNode("1d",new Passenger("Harpreet Aleksandra",610340,"1d",0,250));
-		PassengerNode s4p5 = new PassengerNode("2a",new Passenger("Adalhaid Milda",950562,"2a",1,2500));
-		PassengerNode s4p6 = new PassengerNode("1e",new Passenger("Oskars Muthoni",396014,"1e",2,25));
-		PassengerNode s4p7 = new PassengerNode("2c",new Passenger("Anastasia Amahle",1130584,"2c",0,365));
-		PassengerNode s4p8 = new PassengerNode("2d",new Passenger("Yasen Alaric",851944,"2d",5,653));
-		PassengerNode s4p9 = new PassengerNode("2e",new Passenger("Rozalija Raginaharjaz",1042984,"2e",3,536));
-		PassengerNode s4p10 = new PassengerNode("1b",new Passenger("Yarik Komang",44100,"1b",4,9564));
+	public ArrayList<PassengerNode<String,Passenger>> setUpStage4(){
+		PassengerNode<String,Passenger> s4p1 = new PassengerNode<>("1a", new Passenger("olvir Eusebius",1110,"1a",0,10));
+		PassengerNode<String,Passenger> s4p2 = new PassengerNode<>("2b",new Passenger("Cassian Rufina",290123,"2b",0,100));
+		PassengerNode<String,Passenger> s4p3 = new PassengerNode<>("1c",new Passenger("Erkan Noriko",18200,"1c",0,1000));
+		PassengerNode<String,Passenger> s4p4 = new PassengerNode<>("1d",new Passenger("Harpreet Aleksandra",610340,"1d",0,250));
+		PassengerNode<String,Passenger> s4p5 = new PassengerNode<>("2a",new Passenger("Adalhaid Milda",950562,"2a",1,2500));
+		PassengerNode<String,Passenger> s4p6 = new PassengerNode<>("1e",new Passenger("Oskars Muthoni",396014,"1e",2,25));
+		PassengerNode<String,Passenger> s4p7 = new PassengerNode<>("2c",new Passenger("Anastasia Amahle",1130584,"2c",0,365));
+		PassengerNode<String,Passenger> s4p8 = new PassengerNode<>("2d",new Passenger("Yasen Alaric",851944,"2d",5,653));
+		PassengerNode<String,Passenger> s4p9 = new PassengerNode<>("2e",new Passenger("Rozalija Raginaharjaz",1042984,"2e",3,536));
+		PassengerNode<String,Passenger> s4p10 = new PassengerNode<>("1b",new Passenger("Yarik Komang",44100,"1b",4,9564));
 
 		ArrayList<PassengerNode<String,Passenger>> passengers = new ArrayList<>();
 		passengers.add(s4p1);
@@ -43,15 +43,15 @@ public class HashTabletest extends TestCase {
 		return passengers;
 
 	}
-	public ArrayList setUpStage5(){
-		PassengerNode s5p1 = new PassengerNode("1a",new Passenger("olvir Eusebius",1110,"1a",0,0));
-		PassengerNode s5p2 = new PassengerNode("2b",new Passenger("Cassian Rufina",290123,"2b",0,0));
-		PassengerNode s5p3 = new PassengerNode("3c",new Passenger("Harpreet Aleksandra",18200,"3c",0,0));
-		PassengerNode s5p4 = new PassengerNode("4d",new Passenger("Oskars Muthoni",610340,"4d",0,0));
-		PassengerNode s5p5 = new PassengerNode("2a",new Passenger("Anastasia Amahle",950562,"2a",0,0));
-		PassengerNode s5p6 = new PassengerNode("1b",new Passenger("Yasen Alaric",396014,"1b",0,0));
-		PassengerNode s5p7 = new PassengerNode("2c",new Passenger("Rozalija Raginaharjaz",1130584,"2c",0,0));
-		PassengerNode s5p8 = new PassengerNode("1d",new Passenger("Yarik Komang",851944,"1d",0,0));
+	public ArrayList<PassengerNode<String,Passenger>> setUpStage5(){
+		PassengerNode<String,Passenger> s5p1 = new PassengerNode<>("1a",new Passenger("olvir Eusebius",1110,"1a",0,0));
+		PassengerNode<String,Passenger> s5p2 = new PassengerNode<>("2b",new Passenger("Cassian Rufina",290123,"2b",0,0));
+		PassengerNode<String,Passenger> s5p3 = new PassengerNode<>("3c",new Passenger("Harpreet Aleksandra",18200,"3c",0,0));
+		PassengerNode<String,Passenger> s5p4 = new PassengerNode<>("4d",new Passenger("Oskars Muthoni",610340,"4d",0,0));
+		PassengerNode<String,Passenger> s5p5 = new PassengerNode<>("2a",new Passenger("Anastasia Amahle",950562,"2a",0,0));
+		PassengerNode<String,Passenger> s5p6 = new PassengerNode<>("1b",new Passenger("Yasen Alaric",396014,"1b",0,0));
+		PassengerNode<String,Passenger> s5p7 = new PassengerNode<>("2c",new Passenger("Rozalija Raginaharjaz",1130584,"2c",0,0));
+		PassengerNode<String,Passenger> s5p8 = new PassengerNode<>("1d",new Passenger("Yarik Komang",851944,"1d",0,0));
 		ArrayList<PassengerNode<String,Passenger>> passengers = new ArrayList<>();
 		passengers.add(s5p1);
 		passengers.add(s5p2);
@@ -63,15 +63,15 @@ public class HashTabletest extends TestCase {
 		passengers.add(s5p8);
 		return passengers;
 	}
-	public ArrayList setUpStage6(){
-		PassengerNode s6p1 = new PassengerNode("1a",new Passenger("olvir Eusebius",1110,"1a",1,350));
-		PassengerNode s6p2 = new PassengerNode("2b",new Passenger("Cassian Rufina",290123,"2b",2,125));
-		PassengerNode s6p3 = new PassengerNode("3c",new Passenger("Harpreet Aleksandra",18200,"3c",3,500));
-		PassengerNode s6p4 = new PassengerNode("4d",new Passenger("Oskars Muthoni",610340,"4d",4,95));
-		PassengerNode s6p5 = new PassengerNode("2a",new Passenger("Anastasia Amahle",950562,"2a",5,350));
-		PassengerNode s6p6 = new PassengerNode("1b",new Passenger("Yasen Alaric",396014,"1b",1,95));
-		PassengerNode s6p7 = new PassengerNode("2c",new Passenger("Rozalija Raginaharjaz",1130584,"2c",4,125));
-		PassengerNode s6p8 = new PassengerNode("1d",new Passenger("Yarik Komang",851944,"1d",2,500));
+	public ArrayList<PassengerNode<String,Passenger>> setUpStage6(){
+		PassengerNode<String,Passenger> s6p1 = new PassengerNode<>("1a",new Passenger("olvir Eusebius",1110,"1a",1,350));
+		PassengerNode<String,Passenger> s6p2 = new PassengerNode<>("2b",new Passenger("Cassian Rufina",290123,"2b",2,125));
+		PassengerNode<String,Passenger> s6p3 = new PassengerNode<>("3c",new Passenger("Harpreet Aleksandra",18200,"3c",3,500));
+		PassengerNode<String,Passenger> s6p4 = new PassengerNode<>("4d",new Passenger("Oskars Muthoni",610340,"4d",4,95));
+		PassengerNode<String,Passenger>s6p5 = new PassengerNode<>("2a",new Passenger("Anastasia Amahle",950562,"2a",5,350));
+		PassengerNode<String,Passenger> s6p6 = new PassengerNode<>("1b",new Passenger("Yasen Alaric",396014,"1b",1,95));
+		PassengerNode<String,Passenger> s6p7 = new PassengerNode<>("2c",new Passenger("Rozalija Raginaharjaz",1130584,"2c",4,125));
+		PassengerNode<String,Passenger> s6p8 = new PassengerNode<>("1d",new Passenger("Yarik Komang",851944,"1d",2,500));
 		ArrayList<PassengerNode<String,Passenger>> passengers = new ArrayList<>();
 		passengers.add(s6p1);
 		passengers.add(s6p2);
@@ -83,14 +83,14 @@ public class HashTabletest extends TestCase {
 		passengers.add(s6p8);
 		return passengers;
 	}
-	public ArrayList setUpStage8(){
-		PassengerNode s8p1 = new PassengerNode("1a",new Passenger("olvir Eusebius",1110,"1a",1,350));
+	public ArrayList<PassengerNode<String,Passenger>> setUpStage8(){
+		PassengerNode<String,Passenger> s8p1 = new PassengerNode<>("1a",new Passenger("olvir Eusebius",1110,"1a",1,350));
 		ArrayList<PassengerNode<String,Passenger>> passengers = new ArrayList<>();
 		passengers.add(s8p1);
 		return passengers;
 	}
-	public ArrayList setUpStage9(){
-		PassengerNode s9p1 = new PassengerNode("4a",new Passenger("anatoly karpov",1110290182,"4a",0,908));
+	public ArrayList<PassengerNode<String,Passenger>> setUpStage9(){
+		PassengerNode<String,Passenger> s9p1 = new PassengerNode<>("4a",new Passenger("anatoly karpov",1110290182,"4a",0,908));
 		ArrayList<PassengerNode<String,Passenger>> passengers = new ArrayList<>();
 		passengers.add(s9p1);
 		return passengers;
@@ -141,7 +141,7 @@ public class HashTabletest extends TestCase {
 	public void HashInserttest3(){
       Plane fly1 = setUpStage1();
 	  try{
-		HashTable has= new HashTable(1);
+		HashTable<String,Plane> has= new HashTable<>(1);
 		has.insert(fly1.getNumFlight(),fly1);
 		fail();
 	  }catch(IncorrectObjectExeption e){
@@ -197,7 +197,7 @@ public class HashTabletest extends TestCase {
 	public void HashDeletetest3(){
       Plane fly1 = setUpStage1();
 	  try{
-		HashTable has= new HashTable(1);
+		HashTable<String,Plane> has= new HashTable<>(1);
 		has.delete(fly1.getNumFlight());
 		fail();
 	  }catch(IncorrectObjectExeption e){
@@ -253,15 +253,6 @@ public class HashTabletest extends TestCase {
 		}
     }
 	
-	public void HashSearchtest3(){
-      Plane fly1 = setUpStage1();
-	  try{
-		HashTable has= new HashTable(1);
-		has.search(fly1.getNumFlight());
-		fail();
-	  }catch(IncorrectObjectExeption e){
-		 assertNotNull(e);
-	  }
-    }
+	
 	
 }

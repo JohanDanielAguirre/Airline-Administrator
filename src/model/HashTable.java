@@ -42,11 +42,10 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 			throw new IncorrectObjectExeption ("non valid object");
 		}
 			for(int i=0;i<size;i++){
-				if(passengersInfo[i].equals(val)){
+				if(passengersInfo[i] != null&&passengersInfo[i].equals(val)){
 					throw new DuplicatedObjectExeption("duplicated object detected");
 				}
 			}
-		if(key == val.getClass()){
 			int position = hashFunction(key);
 
 			PassengerNode<K,V> toAdd = new PassengerNode<>(key, val);
@@ -63,9 +62,7 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 			}
 
 			size++;
-		} else {
-			throw new IncorrectObjectExeption("IncorrectObjectExeption");
-		}
+		
 	}
 
 	/**
@@ -92,30 +89,28 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 	 * @return the value V of the node found
 	 */
 	@Override
-	public V search(K key) throws IncorrectObjectExeption{
-		if(key instanceof Passenger){
-			int position = this.hashFunction(key);
+	public V search(K key) {
+		
+		int position = this.hashFunction(key);
 
-			PassengerNode<K,V> toSearch = passengersInfo[position];
-			boolean flag = true;
-			if (toSearch != null) {
-				while(flag){
-					if(toSearch.getKey().equals(key)){
+		PassengerNode<K,V> toSearch = passengersInfo[position];
+		boolean flag = true;
+		if (toSearch != null) {
+			while(flag){
+				if(toSearch.getKey().equals(key)){
+					flag = false;
+				}
+
+				if(flag){
+					toSearch = toSearch.getNext();
+					if(toSearch == null){
 						flag = false;
-					}
-
-					if(flag){
-						toSearch = toSearch.getNext();
-						if(toSearch == null){
-							flag = false;
-						}
 					}
 				}
 			}
-			return toSearch == null? null : toSearch.getValue();
-		} else {
-			throw new IncorrectObjectExeption("IncorrectObjectExeption");
 		}
+		return toSearch == null? null : toSearch.getValue();
+		
     }
 
 	/**
@@ -153,25 +148,23 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 	 */
 	@Override
 	public boolean delete(K key) throws IncorrectObjectExeption{
-		if(key instanceof Passenger){
-			int position = this.hashFunction(key);
+		
+		int position = this.hashFunction(key);
 
-			PassengerNode<K,V> toDelete = search2(key);
+		PassengerNode<K,V> toDelete = search2(key);
 
-			if(toDelete != null){
-				if(toDelete == passengersInfo[position]){
-					passengersInfo[position] = toDelete.getNext();
-				}else{
-					PassengerNode<K,V> toReplace = toDelete.getPrevious();
-					toDelete.getNext().setPrevious(toReplace);
-					toReplace.setNext(toDelete.getNext());
-				}
-				size--;
-				return true;
+		if(toDelete != null){
+			if(toDelete == passengersInfo[position]){
+				passengersInfo[position] = toDelete.getNext();
+			}else{
+				PassengerNode<K,V> toReplace = toDelete.getPrevious();
+				toDelete.getNext().setPrevious(toReplace);
+				toReplace.setNext(toDelete.getNext());
 			}
-		} else {
-		throw new IncorrectObjectExeption("IncorrectObjectExeption");
-		}
+			size--;
+			return true;
+			}
+		 
 		return false;
 	}
 	
@@ -193,4 +186,5 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 	public void setSize(int size) {
 		this.size = size;
 	}
+
 }

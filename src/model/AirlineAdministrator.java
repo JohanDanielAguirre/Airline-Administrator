@@ -64,7 +64,23 @@ public class AirlineAdministrator {
         return msg;
     }
 
-    
+    public void fillPassengers(){
+        try {
+            plane.fillPassengers();
+        } catch (IncorrectObjectExeption e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (DuplicatedObjectExeption e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (NonexistObjectExeption e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return;
+    }   
+
+
 
     public void jsonInFlightInfo(String filePath){
         Gson gson = new Gson();
@@ -109,7 +125,7 @@ public class AirlineAdministrator {
         }
     }
 
-    public void jsonArrivalTimeInfo(String filePath){
+    public void jsonArrivalTimeInfo(String filePath) throws IncorrectObjectExeption{
 
         Gson gson = new Gson();
         File dataDirectory = new File("src\\outs_or_inputs");
@@ -126,14 +142,17 @@ public class AirlineAdministrator {
             }
         } catch (FileNotFoundException e) {
             System.err.println("File not found");
-        }catch (IOException | IncorrectObjectExeption e) {
+        }catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void passengerExit(){
-        for(int i = 0; i < plane.getEntry().heapSize; i++){
-           // plane.getEntry()
+        try {
+            
+            plane.exitPassengers();
+        } catch (IncorrectObjectExeption e) {
+            e.printStackTrace();
         }
         return;
     }

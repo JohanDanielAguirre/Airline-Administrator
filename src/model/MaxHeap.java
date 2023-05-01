@@ -49,7 +49,7 @@ public class MaxHeap implements iMaxPriorityQueue{
 
         Passenger max = Maximum();
         
-        passengers.set(0,passengers.get(heapSize));
+        passengers.set(0,passengers.get(heapSize-1));
 
         heapSize = heapSize - 1;
 
@@ -154,6 +154,14 @@ public class MaxHeap implements iMaxPriorityQueue{
         }
     
         return msg;
+    }
+
+    public int getHeapSize() {
+        return heapSize;
+    }
+
+    public void setHeapSize(int heapSize) {
+        this.heapSize = heapSize;
     }
 
     

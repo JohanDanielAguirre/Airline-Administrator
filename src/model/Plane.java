@@ -99,8 +99,11 @@ public class Plane {
         for(int i = 0; i<rows*columns;i++){
             Passenger passenger = entry.extract_Max();
             try {
-                queue.add(new PassengerNode<>(passenger.getTicket(), passenger));
-                passengers.insert(passenger.getTicket(), passenger);
+                if(passenger!=null){
+                    queue.add(new PassengerNode<>(passenger.getTicket(), passenger));
+                    passengers.insert(passenger.getTicket(), passenger);
+                }
+                
             } catch (DuplicatedObjectExeption | IncorrectObjectExeption | NonexistObjectExeption e) {
                 e.printStackTrace();
             }
