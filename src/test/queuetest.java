@@ -7,14 +7,17 @@ import java.util.ArrayList;
 
 public class queuetest extends TestCase {
 	
-    public void setUpStage1(){
+    public Plane setUpStage1(){
         Plane fly1= new Plane(/*numFLight*/ "MidgetAirlines",/*rows*/5,/*columns*/ 1,/*rowsfirstclass*/ 2);
+		return fly1;
     }
-	public void setUpStage2(){
+	public Plane setUpStage2(){
         Plane fly2= new Plane(/*numFLight*/ "Drugmaxdealer",/*rows*/4,/*columns*/ 2,/*rowsfirstclass*/ 0);
+		return fly2;
     }
-	public void setUpStage3(){
+	public Plane setUpStage3(){
         Plane fly3= new Plane(/*numFLight*/ "Viagrafly",/*rows*/4,/*columns*/ 2,/*rowsfirstclass*/ 4);
+		return fly3;
     }
 	public ArrayList setUpStage4(){
 		PassengerNode s4p1 = new PassengerNode("1a", new Passenger("olvir Eusebius",1110,"1a",0,10));
@@ -97,10 +100,10 @@ public class queuetest extends TestCase {
 	
 	
 	public void queueaddtest1(){
-	   setUpStage1();
+	   Plane plane = setUpStage1();
 	   ArrayList<PassengerNode> pass = new ArrayList<>(setUpStage4());
 	   try{
-		   Queue qu= new Queue(new passengerComparator());
+		   Queue qu= new Queue(new Plane.passengerComparator());
 		   qu.add(pass.get(0));
 		   qu.add(pass.get(1));
 		   qu.add(pass.get(2));
@@ -138,11 +141,11 @@ public class queuetest extends TestCase {
 	    }
     }
 	public void queueaddtest2(){
-        setUpStage1();
+		Plane plane = setUpStage1();
 		ArrayList<PassengerNode> pass = new ArrayList<>(setUpStage6());
 		ArrayList<PassengerNode> pass2 = new ArrayList<>(setUpStage8());
 		try{
-		    Queue qu= new Queue(new passengerComparator());
+		    Queue qu= new Queue(new Plane.passengerComparator());
 		   qu.add(pass.get(0));
 		   qu.add(pass.get(1));
 		   qu.add(pass.get(2));
@@ -158,12 +161,12 @@ public class queuetest extends TestCase {
 		}
     }
 	public void queueaddtest3(){
-		   setUpStage3();
-		   ArrayList<PassengerNode> pass = new ArrayList<>(setUpStage4());
-		   ArrayList<PassengerNode> pass2 = new ArrayList<>(setUpStage9());
+		Plane plane = setUpStage3();
+		ArrayList<PassengerNode> pass = new ArrayList<>(setUpStage4());
+		ArrayList<PassengerNode> pass2 = new ArrayList<>(setUpStage9());
 
 		try{
-		   Queue qu= new Queue(new passengerComparator());
+		   Queue qu= new Queue(new Plane.passengerComparator());
 		   qu.add(pass.get(0));
 		   qu.add(pass.get(1));
 		   qu.add(pass.get(2));
@@ -215,10 +218,10 @@ public class queuetest extends TestCase {
     }
 	
 	public void queuepolltest1(){
-	   setUpStage1();
+		Plane plane = setUpStage1();
 	   ArrayList<PassengerNode> pass = new ArrayList<>(setUpStage4());
 	   try{
-		   Queue qu= new Queue(new passengerComparator());
+		   Queue qu= new Queue(new Plane.passengerComparator());
 		   qu.add(pass.get(0));
 		   qu.add(pass.get(1));
 		   qu.add(pass.get(2));
@@ -237,9 +240,9 @@ public class queuetest extends TestCase {
     }
 	
 	public void queuepolltest2(){
-	   setUpStage1();
+		Plane plane = setUpStage1();
 	   try{
-		   Queue qu= new Queue(new passengerComparator());
+		   Queue qu= new Queue(new Plane.passengerComparator());
 		   assertEquals(null,qu.poll());
 	    }catch (Exception e){
 		   fail();
@@ -248,11 +251,11 @@ public class queuetest extends TestCase {
 	
 	
 	public void queuepolltest3(){
-		   setUpStage3();
-		   ArrayList<PassengerNode> pass = new ArrayList<>(setUpStage4());
-		   ArrayList<PassengerNode> pass2 = new ArrayList<>(setUpStage9());
+		Plane plane = setUpStage3();
+		ArrayList<PassengerNode> pass = new ArrayList<>(setUpStage4());
+		ArrayList<PassengerNode> pass2 = new ArrayList<>(setUpStage9());
 		try{
-		   Queue qu= new Queue(new passengerComparator());
+		   Queue qu= new Queue(new Plane.passengerComparator());
 			qu.add(pass.get(0));
 			qu.add(pass.get(1));
 			qu.add(pass.get(2));
@@ -272,10 +275,10 @@ public class queuetest extends TestCase {
     }
 	
 	public void queueisEmptytest1(){
-	   setUpStage1();
+		Plane plane = setUpStage1();
 	   ArrayList<PassengerNode> pass = new ArrayList<>(setUpStage4());
 	   try{
-		   Queue qu= new Queue(new passengerComparator());
+		   Queue qu= new Queue(new Plane.passengerComparator());
 		   qu.add(pass.get(0));
 		   qu.add(pass.get(1));
 		   qu.add(pass.get(2));
@@ -293,9 +296,9 @@ public class queuetest extends TestCase {
     }
 	
 	public void queueisEmptytest2(){
-	   setUpStage2();
+		Plane plane = setUpStage2();
 	   try{
-		   Queue qu= new Queue(new passengerComparator());
+		   Queue qu= new Queue(new Plane.passengerComparator());
 		   assertEquals(true,qu.isEmpty());
 	    }catch (Exception e){
 		   fail();
