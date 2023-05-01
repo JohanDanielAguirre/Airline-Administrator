@@ -1,5 +1,10 @@
 package model;
 
+import Exeptions.DuplicatedObjectExeption;
+import Exeptions.IncorrectObjectExeption;
+import Exeptions.NonexistObjectExeption;
+import Exeptions.SizePlaneExeption;
+
 public class Plane {
     
     private String numFlight;
@@ -70,7 +75,7 @@ public class Plane {
         return entry;
     }
 
-    public void fillPassengers(){
+    public void fillPassengers() throws IncorrectObjectExeption, DuplicatedObjectExeption, NonexistObjectExeption {
         for(int i = 0; i<rows*columns;i++){
             Passenger passenger = entry.Maximum();
             passengers.insert(passenger.getTicket(), passenger);
