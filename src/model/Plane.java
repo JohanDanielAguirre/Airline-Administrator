@@ -103,10 +103,6 @@ public class Plane {
                 passengers.insert(passenger.getTicket(), passenger);
             } catch (DuplicatedObjectExeption | IncorrectObjectExeption | NonexistObjectExeption e) {
                 e.printStackTrace();
-            } catch (SizePlaneExeption e) {
-                throw new RuntimeException(e);
-            } catch (KeyExeption e) {
-                throw new RuntimeException(e);
             }
         }
         this.exit = queue;
