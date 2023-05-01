@@ -24,7 +24,7 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 	 */
 	public HashTable(int capacity) {
 		
-		this.passengersInfo = new PassengerNode[capacity];
+		this.passengersInfo = new PassengerNode[1000];
 		
 		this.size = 0;
 	}

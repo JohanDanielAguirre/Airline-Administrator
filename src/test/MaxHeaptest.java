@@ -58,7 +58,7 @@ public class MaxHeaptest extends TestCase {
 	   setUpStage1();
 	   setUpStage2();
 	   try{
-		   Maxheap mh= new Maxheap(2);
+		   MaxHeap mh= new MaxHeap(2);
 		   mh.insert(fly2,fly2);
 		   fail();
 	    }catch (IncorrectObjectExeption e){

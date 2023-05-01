@@ -1,12 +1,8 @@
 package ui;
 
-import java.io.*;
 import java.util.Scanner;
 
 import Exeptions.IncorrectObjectExeption;
-import com.google.gson.Gson;
-import java.io.FileReader;
-import java.io.Reader;
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime;    
 
@@ -62,8 +58,8 @@ public class Main{
         sc.nextLine();
         switch(op){
             case 1:
-                admin.jsonInFlightInfo("flightInfo.json");
-                admin.jsonInFlightPassengerInfo("passengerInfo.json");
+                admin.jsonInFlightInfo("flightInfoSetupStage1.json");
+                admin.jsonInFlightPassengerInfo("passengerInfoSetupStage4.json");
                 break;
             case 2:
                 admin.jsonArrivalTimeInfo("arrivalInfo.json");

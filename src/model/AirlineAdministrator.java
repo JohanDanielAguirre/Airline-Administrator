@@ -50,15 +50,15 @@ public class AirlineAdministrator {
 
     public void jsonInFlightInfo(String filePath){
         Gson gson = new Gson();
-        File dataDirectory = new File("data");
+        File dataDirectory = new File("src\\outs_or_inputs");
         File flightInfoFile = new File(dataDirectory, filePath);
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(flightInfoFile));
-            Plane[] planes = gson.fromJson(reader, Plane[].class);
+            Plane planes = gson.fromJson(reader, Plane.class);
             reader.close();
 
-            AirlineAdministratorInfo(planes[0].getNumFlight(), planes[0].getRows(), planes[0].getColumns(), planes[0].getFirstClassRows());
+            AirlineAdministratorInfo(planes.getNumFlight(), planes.getRows(), planes.getColumns(), planes.getFirstClassRows());
         } catch (FileNotFoundException e) {
             System.err.println("File not found");
         }catch (IOException e) {
@@ -68,7 +68,7 @@ public class AirlineAdministrator {
 
     public void jsonInFlightPassengerInfo(String filePath){
         Gson gson = new Gson();
-        File dataDirectory = new File("data");
+        File dataDirectory = new File("src\\outs_or_inputs");
         File passengerInfoFile = new File(dataDirectory, filePath);
 
         try {
@@ -90,7 +90,7 @@ public class AirlineAdministrator {
     public void jsonArrivalTimeInfo(String filePath){
 
         Gson gson = new Gson();
-        File dataDirectory = new File("data");
+        File dataDirectory = new File("src\\outs_or_inputs");
         File arrivalTimeInfoFile = new File(dataDirectory, filePath);
 
         try {

@@ -10,12 +10,13 @@ public class MaxHeap implements iMaxPriorityQueue{
         passengers = new Passenger[capacity];
         heapSize = 0;
     }
+    
 
     @Override
     public void insert(Passenger passenger) {
         heapSize = heapSize + 1;
         passengers[heapSize] = passenger;
-        increase_Key(passengers.length, heapSize); 
+        increase_Key(passengers.length-1, heapSize); 
     }
 
     @Override
@@ -101,6 +102,10 @@ public class MaxHeap implements iMaxPriorityQueue{
 
     private int parent(int i){
         return Math.floorDiv(i, 2);
+    }
+
+    public Passenger[] getPassengers() {
+        return passengers;
     }
     
 }

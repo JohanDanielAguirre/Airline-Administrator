@@ -1,5 +1,9 @@
 package model;
 
+import Exeptions.DuplicatedObjectExeption;
+import Exeptions.IncorrectObjectExeption;
+import Exeptions.NonexistObjectExeption;
+
 public class Plane {
     
     private String numFlight;
@@ -16,7 +20,7 @@ public class Plane {
 
     public Plane(String numF, int rows, int columns, int firstClassRows){
         this.numFlight = numF;
-        passengers = new HashTable<>(rows*columns);
+        passengers = new HashTable<>(1001);
         entry = new MaxHeap(rows*columns);
         this.rows = rows;
         this.columns = columns;
@@ -73,7 +77,11 @@ public class Plane {
     public void fillPassengers(){
         for(int i = 0; i<rows*columns;i++){
             Passenger passenger = entry.Maximum();
-            passengers.insert(passenger.getTicket(), passenger);
+            try {
+                passengers.insert(passenger.getTicket(), passenger);
+            } catch (DuplicatedObjectExeption | IncorrectObjectExeption | NonexistObjectExeption e) {
+                e.printStackTrace();
+            }
         }
     }
 }
