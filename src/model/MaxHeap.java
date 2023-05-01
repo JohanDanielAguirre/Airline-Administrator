@@ -107,5 +107,12 @@ public class MaxHeap implements iMaxPriorityQueue{
     public Passenger[] getPassengers() {
         return passengers;
     }
-    
+
+    public int getHeapSize() {
+        return heapSize;
+    }
+
+    public void setHeapSize(int heapSize) {
+        this.heapSize = heapSize;
+    }
 }
