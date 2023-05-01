@@ -2,7 +2,10 @@ package model;
 
 import Exeptions.DuplicatedObjectExeption;
 import Exeptions.IncorrectObjectExeption;
+import Exeptions.KeyExeption;
 import Exeptions.NonexistObjectExeption;
+import Exeptions.SizePlaneExeption;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -46,7 +49,11 @@ public class AirlineAdministrator {
         if(toPlane != null){
             toPlane.setArrivalTime();
 
-            plane.getEntry().insert(toPlane);
+            try {
+                plane.getEntry().insert(toPlane);
+            } catch (SizePlaneExeption | KeyExeption | NonexistObjectExeption e) {
+                e.printStackTrace();
+            }
             msg = "El pasajero entro al avión\n";
         }
         
