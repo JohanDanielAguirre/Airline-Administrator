@@ -71,6 +71,19 @@ public class MaxHeap implements iMaxPriorityQueue{
 
     }
 
+    public Passenger searhPassenger(Passenger p){
+        Passenger passenger = null;
+        boolean flag = false;
+        for (int i = 0; i < passengers.size()&&!flag; i++) {
+            if(passenger == passengers.get(i)){
+                passenger = passengers.get(i);
+                flag = true;
+            }
+        }
+
+        return passenger;
+    }
+
     private void buildMaxHeap(){
         heapSize = passengers.size();
 

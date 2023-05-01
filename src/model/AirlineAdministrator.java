@@ -50,17 +50,21 @@ public class AirlineAdministrator {
             toPlane.setArrivalTime();
 
             try {
-                plane.getEntry().insert(toPlane);
+                msg += plane.enterPlane(toPlane);
             } catch (SizePlaneExeption | KeyExeption | NonexistObjectExeption e) {
                 e.printStackTrace();
             }
             msg = "El pasajero entro al avión\n";
+        }else if(plane.getRows() == 0){
+            msg = "plane is full";
         }
         
         msg += plane.getEntry().print();
         
         return msg;
     }
+
+    
 
     public void jsonInFlightInfo(String filePath){
         Gson gson = new Gson();

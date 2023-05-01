@@ -4,6 +4,7 @@ import Exeptions.DuplicatedObjectExeption;
 import Exeptions.IncorrectObjectExeption;
 import Exeptions.NonexistObjectExeption;
 import Exeptions.SizePlaneExeption;
+import Exeptions.*;
 
 public class Plane {
     
@@ -60,6 +61,20 @@ public class Plane {
         this.firstClassRows = firstClassRows;
     }
 
+    public String enterPlane(Passenger passenger)  throws SizePlaneExeption, KeyExeption, NonexistObjectExeption {
+        String msg = "";
+        
+        if(entry.searhPassenger(passenger) != null){
+            msg = "The passenger is already in";
+        }else{
+            entry.insert(passenger);
+            rows--;
+        }
+        
+
+        return msg;
+    }
+
     @Override
     public String toString() {
         return "Plane{" +
@@ -77,7 +92,7 @@ public class Plane {
 
     public void fillPassengers() throws IncorrectObjectExeption, DuplicatedObjectExeption, NonexistObjectExeption {
         for(int i = 0; i<rows*columns;i++){
-            Passenger passenger = entry.Maximum();
+            Passenger passenger = entry.extract_Max();
             try {
                 passengers.insert(passenger.getTicket(), passenger);
             } catch (DuplicatedObjectExeption | IncorrectObjectExeption | NonexistObjectExeption e) {
