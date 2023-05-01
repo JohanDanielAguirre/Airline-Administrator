@@ -1,5 +1,9 @@
 package model;
 
+import Exeptions.KeyExeption;
+import Exeptions.NonexistObjectExeption;
+import Exeptions.SizePlaneExeption;
+
 import java.util.ArrayList;
 
 public class MaxHeap implements iMaxPriorityQueue{
@@ -14,7 +18,7 @@ public class MaxHeap implements iMaxPriorityQueue{
     
 
     @Override
-    public void insert(Passenger passenger) {
+    public void insert(Passenger passenger) throws SizePlaneExeption, KeyExeption, NonexistObjectExeption {
        
         passengers.add(passenger);;
         heapSize = passengers.size();
