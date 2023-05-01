@@ -78,6 +78,8 @@ public class Main{
         System.out.println("Enter the ticket of the passenger");
         String ticket = sc.nextLine();
 
-        admin.addPassengersToPlane(ticket);
+        System.out.println(admin.addPassengersToPlane(ticket));
+
+        
     }
 }

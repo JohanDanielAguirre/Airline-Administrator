@@ -83,8 +83,8 @@ public class Passenger implements Comparable<Passenger>{
         return ArrivalTime;
     }
 
-    public void setArrivalTime(LocalDateTime arrivalTime) {
-        ArrivalTime = arrivalTime;
+    public void setArrivalTime() {
+        ArrivalTime = LocalDateTime.now();
     }
 
     public boolean isFirstClass() {
@@ -132,7 +132,6 @@ public class Passenger implements Comparable<Passenger>{
                 "name=" + name + '\'' +
                 ", id=" + id +
                 ", ticket=" + ticket + '\'' +
-                ", ArrivalTime=" + dtf.format(ArrivalTime) +
                 '}';
     }
 
@@ -155,5 +154,5 @@ public class Passenger implements Comparable<Passenger>{
         }
         return 0;
     }
-    
+
 }

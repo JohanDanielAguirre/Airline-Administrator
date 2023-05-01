@@ -16,7 +16,7 @@ public class MaxHeap implements iMaxPriorityQueue{
     @Override
     public void insert(Passenger passenger) {
        
-        passengers.add(heapSize, passenger);;
+        passengers.add(passenger);;
         heapSize = passengers.size();
         increase_Key(passengers.size()-1, passengers.lastIndexOf(passenger)); 
     }
@@ -50,7 +50,10 @@ public class MaxHeap implements iMaxPriorityQueue{
             return;
         }
 
+        Passenger swap1 = passengers.get(0);
+
         passengers.set(0, passengers.get(newKey));
+        passengers.set(newKey, swap1);
         
         
         while(x>0 && passengers.get(parent(x)).compareTo(passengers.get(x))<0){
@@ -105,6 +108,17 @@ public class MaxHeap implements iMaxPriorityQueue{
 
     private int parent(int i){
         return Math.floorDiv(i, 2);
+    }
+
+    public String print(){
+
+        String msg = "";
+        
+        for (int i = 0; i < passengers.size(); i++) {
+            msg += passengers.get(i).toString() + "\n";
+        }
+    
+        return msg;
     }
 
     

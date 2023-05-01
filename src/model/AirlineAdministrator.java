@@ -38,14 +38,21 @@ public class AirlineAdministrator {
         return msg;
     }
 
-    public void addPassengersToPlane(String ticket) throws IncorrectObjectExeption {
-
+    public String addPassengersToPlane(String ticket) throws IncorrectObjectExeption {
+    
+        String msg = "";
         Passenger toPlane = passengersInfo.search(ticket);
-        toPlane.setArrivalTime(LocalDateTime.now());
 
-        plane.getEntry().insert(toPlane);
+        if(toPlane != null){
+            toPlane.setArrivalTime();
+
+            plane.getEntry().insert(toPlane);
+            msg = "El pasajero entro al avión\n";
+        }
         
-        return;
+        msg += plane.getEntry().print();
+        
+        return msg;
     }
 
     public void jsonInFlightInfo(String filePath){
@@ -104,8 +111,7 @@ public class AirlineAdministrator {
             reader.close();
 
             for (String id : arrivalTimeMap.keySet()) {
-                LocalDateTime arrivalTime = arrivalTimeMap.get(id);
-                passengersInfo.search(id).setArrivalTime(arrivalTime);
+                passengersInfo.search(id).setArrivalTime();
             }
         } catch (FileNotFoundException e) {
             System.err.println("File not found");
