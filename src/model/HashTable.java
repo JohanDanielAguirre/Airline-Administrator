@@ -36,6 +36,16 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 	 */
 	@Override
 	public void insert(K key, V val) throws DuplicatedObjectExeption, IncorrectObjectExeption, NonexistObjectExeption {
+		if(val==null){
+			throw new NonexistObjectExeption ("invalid object");
+		}else if(!(val instanceof Passenger)){
+			throw new IncorrectObjectExeption ("non valid object");
+		}
+			for(int i=0;i<size;i++){
+				if(passengersInfo[i].equals(val)){
+					throw new DuplicatedObjectExeption("duplicated object detected");
+				}
+			}
 		if(key == val.getClass()){
 			int position = hashFunction(key);
 
@@ -56,9 +66,6 @@ public class HashTable<K,V> implements iHashTable<K,V>{
 		} else {
 			throw new IncorrectObjectExeption("IncorrectObjectExeption");
 		}
-
-
-
 	}
 
 	/**

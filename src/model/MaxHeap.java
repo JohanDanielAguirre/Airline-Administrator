@@ -4,6 +4,8 @@ import Exeptions.KeyExeption;
 import Exeptions.NonexistObjectExeption;
 import Exeptions.SizePlaneExeption;
 
+import Exeptions.*;
+
 import java.util.ArrayList;
 
 public class MaxHeap implements iMaxPriorityQueue{
@@ -19,10 +21,19 @@ public class MaxHeap implements iMaxPriorityQueue{
 
     @Override
     public void insert(Passenger passenger) throws SizePlaneExeption, KeyExeption, NonexistObjectExeption {
+		if(heapSize>1000){
+		   throw new SizePlaneExeption("maximum size reached");
+		}else if(passenger ==null){
+			throw new NonexistObjectExeption("non exist object");
+		}
+		try{
+			passengers.add(passenger);
+			heapSize = passengers.size();
+			increase_Key(passengers.size()-1, passengers.lastIndexOf(passenger)); 
+		}catch (Exception e){
+			throw new KeyExeption("something is wrong");
+		}
        
-        passengers.add(passenger);;
-        heapSize = passengers.size();
-        increase_Key(passengers.size()-1, passengers.lastIndexOf(passenger)); 
     }
 
     @Override
@@ -47,28 +58,35 @@ public class MaxHeap implements iMaxPriorityQueue{
     }
 
     @Override
-    public void increase_Key(int x, int newKey) {
-       
+    public void increase_Key(int x, int newKey) throws KeyExeption,SizePlaneExeption,NonexistObjectExeption{
+		if(newKey<0){
+			throw new KeyExeption("invalid key type");
+		}else if(newKey>1000){
+			throw new SizePlaneExeption("maximum size reached");
+		}
 
         if(passengers.get(x).compareTo(passengers.get(newKey)) > 0){
             return;
         }
+		try{
+				Passenger swap1 = passengers.get(0);
 
-        Passenger swap1 = passengers.get(0);
+			passengers.set(0, passengers.get(newKey));
+			passengers.set(newKey, swap1);
+			
+			
+			while(x>0 && passengers.get(parent(x)).compareTo(passengers.get(x))<0){
+				Passenger swap = passengers.get(x);
 
-        passengers.set(0, passengers.get(newKey));
-        passengers.set(newKey, swap1);
+				passengers.set(x, passengers.get(parent(x)));
+				passengers.set(parent(x), swap);
+
+				x = parent(x);
+			}
+		}catch (Exception e){
+			throw new NonexistObjectExeption("imposible change");
+		}
         
-        
-        while(x>0 && passengers.get(parent(x)).compareTo(passengers.get(x))<0){
-            Passenger swap = passengers.get(x);
-
-            passengers.set(x, passengers.get(parent(x)));
-            passengers.set(parent(x), swap);
-
-            x = parent(x);
-        }
-
     }
 
     public Passenger searhPassenger(Passenger p){
