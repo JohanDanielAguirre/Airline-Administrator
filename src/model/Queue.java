@@ -7,7 +7,7 @@ public class Queue<K, V> implements iQueue<K, V>{
     private PassengerNode<K,V> tail;
     private int size;
 
-    public Queue() {
+    public Queue(Plane.passengerComparator passengerComparator) {
         head = null;
         tail = null;
         size = 0;

@@ -100,7 +100,7 @@ public class queuetest extends TestCase {
 	   setUpStage1();
 	   ArrayList<PassengerNode> pass = new ArrayList<>(setUpStage4());
 	   try{
-		   Queue qu= new Queue();
+		   Queue qu= new Queue(new passengerComparator());
 		   qu.add(pass.get(0));
 		   qu.add(pass.get(1));
 		   qu.add(pass.get(2));
@@ -142,7 +142,7 @@ public class queuetest extends TestCase {
 		ArrayList<PassengerNode> pass = new ArrayList<>(setUpStage6());
 		ArrayList<PassengerNode> pass2 = new ArrayList<>(setUpStage8());
 		try{
-		    Queue qu= new Queue();
+		    Queue qu= new Queue(new passengerComparator());
 		   qu.add(pass.get(0));
 		   qu.add(pass.get(1));
 		   qu.add(pass.get(2));
@@ -163,7 +163,7 @@ public class queuetest extends TestCase {
 		   ArrayList<PassengerNode> pass2 = new ArrayList<>(setUpStage9());
 
 		try{
-		   Queue qu= new Queue();
+		   Queue qu= new Queue(new passengerComparator());
 		   qu.add(pass.get(0));
 		   qu.add(pass.get(1));
 		   qu.add(pass.get(2));
@@ -218,7 +218,7 @@ public class queuetest extends TestCase {
 	   setUpStage1();
 	   ArrayList<PassengerNode> pass = new ArrayList<>(setUpStage4());
 	   try{
-		   Queue qu= new Queue();
+		   Queue qu= new Queue(new passengerComparator());
 		   qu.add(pass.get(0));
 		   qu.add(pass.get(1));
 		   qu.add(pass.get(2));
@@ -239,7 +239,7 @@ public class queuetest extends TestCase {
 	public void queuepolltest2(){
 	   setUpStage1();
 	   try{
-		   Queue qu= new Queue();
+		   Queue qu= new Queue(new passengerComparator());
 		   assertEquals(null,qu.poll());
 	    }catch (Exception e){
 		   fail();
@@ -252,7 +252,7 @@ public class queuetest extends TestCase {
 		   ArrayList<PassengerNode> pass = new ArrayList<>(setUpStage4());
 		   ArrayList<PassengerNode> pass2 = new ArrayList<>(setUpStage9());
 		try{
-		   Queue qu= new Queue();
+		   Queue qu= new Queue(new passengerComparator());
 			qu.add(pass.get(0));
 			qu.add(pass.get(1));
 			qu.add(pass.get(2));
@@ -275,7 +275,7 @@ public class queuetest extends TestCase {
 	   setUpStage1();
 	   ArrayList<PassengerNode> pass = new ArrayList<>(setUpStage4());
 	   try{
-		   Queue qu= new Queue();
+		   Queue qu= new Queue(new passengerComparator());
 		   qu.add(pass.get(0));
 		   qu.add(pass.get(1));
 		   qu.add(pass.get(2));
@@ -295,7 +295,7 @@ public class queuetest extends TestCase {
 	public void queueisEmptytest2(){
 	   setUpStage2();
 	   try{
-		   Queue qu= new Queue();
+		   Queue qu= new Queue(new passengerComparator());
 		   assertEquals(true,qu.isEmpty());
 	    }catch (Exception e){
 		   fail();
