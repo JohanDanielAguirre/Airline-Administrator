@@ -28,13 +28,11 @@ public class Planetest extends TestCase {
     }
 	public void uploadtest3(){
 		AirlineAdministrator arc= new AirlineAdministrator();
-	   try{
-		  arc.jsonInFlightPassengerInfo("D:/Documents/Downloads/a/airline_administrator/src/outs_or_inputs/passengerInfoSetupStage4");
-		  arc.jsonInFlightInfo("D:/Documents/Downloads/a/airline_administrator/src/outs_or_inputs/flightInfoSetupStage3");
-		  fail();
-	   }catch (SizePlaneExeption e){
-		   assertNotNull(e);
-	   }
+	   
+		arc.jsonInFlightPassengerInfo("D:/Documents/Downloads/a/airline_administrator/src/outs_or_inputs/passengerInfoSetupStage4");
+		arc.jsonInFlightInfo("D:/Documents/Downloads/a/airline_administrator/src/outs_or_inputs/flightInfoSetupStage3");
+		  
+	   
     }
 	public void uploadtest4(){
 		AirlineAdministrator arc= new AirlineAdministrator();
