@@ -1,27 +1,29 @@
 package model;
 
+import java.util.ArrayList;
 
 public class MaxHeap implements iMaxPriorityQueue{
 
-    private Passenger[] passengers;
+    private ArrayList<Passenger> passengers;
     int heapSize;
 
     public MaxHeap(int capacity){
-        passengers = new Passenger[capacity];
-        heapSize = 0;
+        passengers = new ArrayList<>();
+        heapSize = passengers.size();
     }
     
 
     @Override
     public void insert(Passenger passenger) {
-        heapSize = heapSize + 1;
-        passengers[heapSize] = passenger;
-        increase_Key(passengers.length-1, heapSize); 
+       
+        passengers.add(heapSize, passenger);;
+        heapSize = passengers.size();
+        increase_Key(passengers.size()-1, passengers.lastIndexOf(passenger)); 
     }
 
     @Override
     public Passenger Maximum() {
-        return passengers[0];
+        return passengers.get(0);
     }
 
     @Override
@@ -32,7 +34,7 @@ public class MaxHeap implements iMaxPriorityQueue{
 
         Passenger max = Maximum();
         
-        passengers[0] = passengers[heapSize];
+        passengers.set(0,passengers.get(heapSize));
 
         heapSize = heapSize - 1;
 
@@ -43,18 +45,19 @@ public class MaxHeap implements iMaxPriorityQueue{
     @Override
     public void increase_Key(int x, int newKey) {
        
-        if(passengers[x].compareTo(passengers[newKey]) > 0){
+
+        if(passengers.get(x).compareTo(passengers.get(newKey)) > 0){
             return;
         }
 
-        passengers[0] = passengers[newKey];
+        passengers.set(0, passengers.get(newKey));
         
         
-        while(x>0 && passengers[parent(x)].compareTo(passengers[x])<0){
-            Passenger swap = passengers[x];
+        while(x>0 && passengers.get(parent(x)).compareTo(passengers.get(x))<0){
+            Passenger swap = passengers.get(x);
 
-            passengers[x] = passengers[parent(x)];
-            passengers[parent(x)] = swap;
+            passengers.set(x, passengers.get(parent(x)));
+            passengers.set(parent(x), swap);
 
             x = parent(x);
         }
@@ -62,9 +65,9 @@ public class MaxHeap implements iMaxPriorityQueue{
     }
 
     private void buildMaxHeap(){
-        heapSize = passengers.length;
+        heapSize = passengers.size();
 
-        for(int i = passengers.length/2;i>2;i--){
+        for(int i = passengers.size()/2;i>2;i--){
             maxHeapify(i);
         }
     }
@@ -75,18 +78,18 @@ public class MaxHeap implements iMaxPriorityQueue{
         int r = right(i);
 
         int largest;
-        if(l<=heapSize && passengers[l].compareTo(passengers[i]) > 0){
+        if(l<=heapSize && passengers.get(l).compareTo(passengers.get(i)) > 0){
             largest = l;
         }else {
             largest = i;
         }
 
-        if(r<=heapSize && passengers[r].compareTo(passengers[largest]) > 0){
+        if(r<=heapSize && passengers.get(r).compareTo(passengers.get(largest)) > 0){
             largest = r;
         }
 
         if (largest != i){
-            passengers[i] = passengers[largest];
+            passengers.set(i, passengers.get(largest));
             maxHeapify(largest);
         }
 
@@ -104,8 +107,5 @@ public class MaxHeap implements iMaxPriorityQueue{
         return Math.floorDiv(i, 2);
     }
 
-    public Passenger[] getPassengers() {
-        return passengers;
-    }
     
 }
